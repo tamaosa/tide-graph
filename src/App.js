@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import MyResponsiveLine from "./component/MyResponsiveLine.js";
 
 function App() {
   let now = new Date();
@@ -19,7 +20,10 @@ function App() {
         >
           Learn React
         </a>
-        <h2>{now.toLocaleTimeString()}</h2>
+        <div style={{ height: "720px", width: "1000px" }}>
+          <MyResponsiveLine />
+        </div>
+        <h2>{now.toLocaleDateString("ja")}</h2>
       </header>
     </div>
   );
