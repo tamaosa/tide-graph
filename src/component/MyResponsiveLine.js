@@ -79,7 +79,7 @@ const MyResponsiveLine = () => (
   <div
     style={{ overflowX: "scroll", overflowY: "hidden", whiteSpace: "nowrap" }}
   >
-    <div style={{ height: "720px", width: "2000px" }}>
+    <div style={{ height: "90vh", width: "300vw" }}>
       <ResponsiveLine
         data={tidedata}
         margin={{ top: 50, right: 50, bottom: 100, left: 100 }}
@@ -90,7 +90,7 @@ const MyResponsiveLine = () => (
           axis: {
             legend: {
               text: {
-                fontSize: 30
+                fontSize: 25
               }
             }
           }

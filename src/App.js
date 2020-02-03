@@ -20,11 +20,17 @@ function App() {
         >
           Learn React
         </a>
-        <div style={{ height: "720px", width: "1000px" }}>
-          <MyResponsiveLine />
-        </div>
-        <h2>{now.toLocaleDateString("ja")}</h2>
       </header>
+      <main className="App-main">
+        <div className="container">
+          <h1>金沢のタイトグラフ</h1>
+          <MyResponsiveLine />
+          <p>{now.toLocaleDateString("ja")}</p>
+        </div>
+      </main>
+      <footer className="App-footer">
+        <p>Footer</p>
+      </footer>
     </div>
   );
 }
