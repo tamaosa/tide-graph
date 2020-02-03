@@ -42,6 +42,39 @@ const baseColor = "#282c34";
 const mainColor = "#0094FA";
 const accentColor = "#D3FBD8";
 
+const sunriseTime = ["2019/05/29 01:00", "2019/05/29 03:20"];
+const sunsetTime = ["2019/05/29 02:40", "2019/05/29 05:20"];
+const sunriseMarker = sunriseTime.map(x => ({
+  axis: "x",
+  value: new Date(x),
+  legend: "日の出",
+  legendPosition: "top",
+  legendOffsetY: 20,
+  lineStyle: {
+    stroke: accentColor,
+    strokeWidth: 2
+  },
+  textStyle: {
+    fill: accentColor,
+    fontSize: 15
+  }
+}));
+const sunsetMarker = sunsetTime.map(x => ({
+  axis: "x",
+  value: new Date(x),
+  legend: "日の入り",
+  legendPosition: "top",
+  legendOffsetY: 20,
+  lineStyle: {
+    stroke: accentColor,
+    strokeWidth: 2
+  },
+  textStyle: {
+    fill: accentColor,
+    fontSize: 15
+  }
+}));
+
 const MyResponsiveLine = () => (
   <div
     style={{ overflowX: "scroll", overflowY: "hidden", whiteSpace: "nowrap" }}
@@ -104,23 +137,7 @@ const MyResponsiveLine = () => (
         colors={mainColor}
         enablePoints={false}
         isInteractive={false}
-        markers={[
-          {
-            axis: "x",
-            value: new Date("2019/05/29 05:20"),
-            legend: "日の出",
-            legendPosition: "top",
-            legendOffsetY: 20,
-            lineStyle: {
-              stroke: accentColor,
-              strokeWidth: 2
-            },
-            textStyle: {
-              fill: accentColor,
-              fontSize: 20
-            }
-          }
-        ]}
+        markers={sunriseMarker.concat(sunsetMarker)}
       />
     </div>
   </div>
