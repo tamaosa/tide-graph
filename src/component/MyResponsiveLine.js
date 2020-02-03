@@ -1,5 +1,6 @@
 import React from "react";
 import { ResponsiveLine } from "@nivo/line";
+import "../App.css";
 
 const tidedata = [
   {
@@ -36,6 +37,10 @@ const tidedata = [
     ]
   }
 ];
+const textColor = "#F4F9FF";
+const baseColor = "#282c34";
+const mainColor = "#0094FA";
+const accentColor = "#D3FBD8";
 
 const MyResponsiveLine = () => (
   <div
@@ -46,9 +51,9 @@ const MyResponsiveLine = () => (
         data={tidedata}
         margin={{ top: 50, right: 50, bottom: 100, left: 100 }}
         theme={{
-          background: "#282c34",
+          background: baseColor,
           fontSize: 20,
-          textColor: "#F4F9FF",
+          textColor: textColor,
           axis: {
             legend: {
               text: {
@@ -96,7 +101,7 @@ const MyResponsiveLine = () => (
           legendOffset: -70,
           legendPosition: "middle"
         }}
-        colors="#0094FA"
+        colors={mainColor}
         enablePoints={false}
         isInteractive={false}
         markers={[
@@ -107,11 +112,11 @@ const MyResponsiveLine = () => (
             legendPosition: "top",
             legendOffsetY: 20,
             lineStyle: {
-              stroke: "#D3FBD8",
+              stroke: accentColor,
               strokeWidth: 2
             },
             textStyle: {
-              fill: "#F4F9FF",
+              fill: accentColor,
               fontSize: 20
             }
           }
