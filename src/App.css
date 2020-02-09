@@ -1,57 +1,40 @@
 .App {
-  text-align: center;
   background-color: #282c34;
   color: #f4f9ff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.App-navbar {
   font-size: calc(10px + 2vmin);
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .App-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
 }
 
-.App-footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-}
 .container {
   width: 90vw;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.App-title {
+  margin-left: 4rem;
+  margin-bottom: 2rem;
+  font-size: calc(10px + 3.5vmin);
+}
+
+.App-footer {
+  font-size: calc(10px + 2vmin);
+  background-color: #454754;
+}
+.footer-logo {
+  padding-top: 4em;
+}
+.footer-contact {
+  text-align: right;
+  padding-top: 1em;
+  padding-bottom: 2em;
+}
+.footer-contact a {
+  color: #d3fbd8;
 }

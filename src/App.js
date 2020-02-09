@@ -1,36 +1,24 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import MyResponsiveLine from "./component/MyResponsiveLine.js";
+import Navbar from "./component/Navbar.js";
+import Footer from "./component/Footer.js";
 
 function App() {
   let now = new Date();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
       <main className="App-main">
         <div className="container">
-          <h1>金沢のタイトグラフ</h1>
+          <h1 className="App-title">
+            <span style={{ fontSize: "2em" }}>金沢</span>のタイトグラフ
+          </h1>
           <MyResponsiveLine />
           <p>{now.toLocaleDateString("ja")}</p>
         </div>
       </main>
-      <footer className="App-footer">
-        <p>Footer</p>
-      </footer>
+      <Footer />
     </div>
   );
 }
