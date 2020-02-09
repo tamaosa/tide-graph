@@ -24,15 +24,17 @@
 }
 
 .App-footer {
-  font-size: calc(10px + 2vmin);
   background-color: #454754;
 }
 .footer-logo {
+  width: 60%;
+  font-size: calc(10px + 1vmin);
   padding-top: 4em;
 }
 .footer-contact {
+  font-size: calc(10px + 2vmin);
   text-align: right;
-  padding-top: 1em;
+  padding-top: 2em;
   padding-bottom: 2em;
 }
 .footer-contact a {

@@ -1,14 +1,15 @@
 import React from "react";
 import "../App.css";
+import logo from "../img/footer-logo.svg";
 
 const Footer = () => (
   <footer className="App-footer">
     <div className="container">
       <div className="footer-logo">
+        <img src={logo} alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          潮汐データには気象庁ホームページにて公開されている潮位表（天文潮位）を利用しています。
         </p>
-        <p>aa</p>
       </div>
       <div className="footer-contact">
         Contact&nbsp;
