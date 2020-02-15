@@ -1,23 +1,19 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Slide from "@material-ui/core/Slide";
-import { makeStyles } from "@material-ui/core/styles";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import logo from "../img/logo1.svg";
+import HamburgerMenu from "./HamburgerMenu.js";
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1
+const useStyles = makeStyles(() => ({
+  toolbar: {
+    height: "7.5vh"
   },
-  menuButton: {
-    marginRight: theme.spacing(4)
-  },
-  title: {
-    flexGrow: 1
+  logo: {
+    height: "100%"
   }
 }));
 
@@ -44,27 +40,19 @@ HideOnScroll.propTypes = {
   window: PropTypes.func
 };
 
-export default function HideAppBar(props) {
+export default function(props) {
   const classes = useStyles();
-
   return (
     <nav>
       <HideOnScroll {...props}>
-        <AppBar style={{ backgroundColor: "#454754" }}>
-          <Toolbar>
-            <IconButton
-              edge="start"
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="menu"
-            >
-              <MenuIcon />
-            </IconButton>
-            <img src={logo} alt="logo" style={{ height: "50px" }} />
+        <AppBar>
+          <Toolbar className={classes.toolbar}>
+            <HamburgerMenu />
+            <img src={logo} alt="logo" className={classes.logo} />
           </Toolbar>
         </AppBar>
       </HideOnScroll>
-      <Toolbar />
+      <Toolbar className={classes.toolbar} />
     </nav>
   );
 }
