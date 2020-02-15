@@ -27,9 +27,13 @@
   background-color: #454754;
 }
 .footer-logo {
-  width: 60%;
+  width: 50%;
+  max-width: 600;
   font-size: calc(10px + 1vmin);
   padding-top: 4em;
+}
+.footer-logo img {
+  width: 100%;
 }
 .footer-contact {
   font-size: calc(10px + 2vmin);
