@@ -1,6 +1,5 @@
 import React from "react";
 import { ResponsiveLine } from "@nivo/line";
-import "../App.css";
 
 const tidedata = [
   {
@@ -44,6 +43,7 @@ const accentColor = "#D3FBD8";
 
 const sunriseTime = ["2019/05/29 01:00", "2019/05/29 03:20"];
 const sunsetTime = ["2019/05/29 02:40", "2019/05/29 05:20"];
+
 const sunriseMarker = sunriseTime.map(x => ({
   axis: "x",
   value: new Date(x),
@@ -56,7 +56,7 @@ const sunriseMarker = sunriseTime.map(x => ({
   },
   textStyle: {
     fill: accentColor,
-    fontSize: 15
+    fontSize: 16
   }
 }));
 const sunsetMarker = sunsetTime.map(x => ({
@@ -84,6 +84,7 @@ const MyResponsiveLine = () => (
         data={tidedata}
         margin={{ top: 50, right: 50, bottom: 100, left: 100 }}
         theme={{
+          fontFamily: ['"M PLUS 1p"', "-apple-system", "sans-serif"].join(","),
           background: baseColor,
           fontSize: 20,
           textColor: textColor,
