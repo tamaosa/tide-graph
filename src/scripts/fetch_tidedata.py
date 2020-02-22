@@ -22,29 +22,29 @@ def extract_1month(target_year, target_month, point, lat, lon):
                                      for i in range(len(tidedata) // 3)]
                 high_data = strline[80:108]
                 high_time = [high_data[i*7:i*7 + 2] + ":" +
-                             high_data[i*7+2:i*7 + 4] for i in range(4)]
+                             high_data[i*7+2:i*7 + 4] for i in range(2)]
                 date_data["high_time"] = [
-                    i.replace(" ", "0") for i in high_time if i != "99:99"]
-                high_tide = [high_data[i * 7 + 4:i * 7 + 7] for i in range(4)]
-                date_data["high_tide"] = [int(i)
-                                          for i in high_tide if i != "999"]
+                    "--:--" if i == "99:99" else i.replace(" ", "0") for i in high_time]
+                high_tide = [high_data[i * 7 + 4:i * 7 + 7] for i in range(2)]
+                date_data["high_tide"] = ["--" if i == "999" else int(i)
+                                          for i in high_tide]
                 low_data = strline[108:136]
                 low_time = [low_data[i*7:i*7 + 2] + ":" +
-                            low_data[i*7+2:i*7 + 4] for i in range(4)]
+                            low_data[i * 7 + 2:i * 7 + 4] for i in range(2)]
                 date_data["low_time"] = [
-                    i.replace(" ", "0") for i in low_time if i != "99:99"]
-                low_tide = [low_data[i * 7 + 4:i * 7 + 7] for i in range(4)]
-                date_data["low_tide"] = [int(i)
-                                         for i in low_tide if i != "999"]
+                    "--:--" if i == "99:99" else i.replace(" ", "0") for i in low_time]
+                low_tide = [low_data[i * 7 + 4:i * 7 + 7] for i in range(2)]
+                date_data["low_tide"] = ["--" if i == "999" else int(i)
+                                         for i in low_tide]
                 here = ephem.Observer()
                 here.lat = lat
                 here.lon = lon
                 here.date = datetime(year, month, day, 12) - timedelta(days=1)
                 sun = ephem.Sun()
                 date_data["sunrise"] = ephem.localtime(here.next_rising(sun)).strftime(
-                    "%H:%M")
+                    "%Y/%m/%d %H:%M")
                 date_data["sunset"] = ephem.localtime(here.next_setting(sun)).strftime(
-                    "%H:%M")
+                    "%Y/%m/%d %H:%M")
                 date_data["moon_age"] = here.date - \
                     ephem.previous_new_moon(here.date)
                 data[datetime(year, month, day).strftime(
