@@ -28,8 +28,8 @@ function formatData(fetchData, days) {
     }));
     tideData.push(...dailyData.tide);
     data.graph[0].data.push(...graphData);
-    data.sunrise.push(dailyData.sunrise);
-    data.sunset.push(dailyData.sunset);
+    data.sunrise.push(strDate + " " + dailyData.sunrise);
+    data.sunset.push(strDate + " " + dailyData.sunset);
   }
   data.maxtide = Math.max(...tideData);
   data.mintide = Math.min(...tideData);

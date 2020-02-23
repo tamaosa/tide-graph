@@ -42,9 +42,9 @@ def extract_1month(target_year, target_month, point, lat, lon):
                 here.date = datetime(year, month, day, 12) - timedelta(days=1)
                 sun = ephem.Sun()
                 date_data["sunrise"] = ephem.localtime(here.next_rising(sun)).strftime(
-                    "%Y/%m/%d %H:%M")
+                    "%H:%M")
                 date_data["sunset"] = ephem.localtime(here.next_setting(sun)).strftime(
-                    "%Y/%m/%d %H:%M")
+                    "%H:%M")
                 date_data["moon_age"] = here.date - \
                     ephem.previous_new_moon(here.date)
                 data[datetime(year, month, day).strftime(
