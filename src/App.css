@@ -29,7 +29,7 @@
 }
 .footer-logo {
   width: 80%;
-  max-width: 600;
+  max-width: 560px;
   font-size: calc(10px + 1vmin);
 }
 .footer-logo img {
