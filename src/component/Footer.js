@@ -5,10 +5,11 @@ import logo from "../img/footer-logo.svg";
 const Footer = () => (
   <footer className="App-footer">
     <div className="container">
+      <hr />
       <div className="footer-logo">
         <img src={logo} alt="logo" />
         <p>
-          潮汐データには気象庁ホームページにて公開されている潮位表（天文潮位）を利用しています。
+          本ページで使用している潮汐データには、気象庁ホームページにて公開されている潮位表（天文潮位）を利用しています。
         </p>
       </div>
       <div className="footer-contact">

@@ -9,6 +9,7 @@
 
 .App-main {
   font-size: calc(10px + 2vmin);
+  margin-bottom: 5rem;
 }
 
 .container {
@@ -24,22 +25,20 @@
 }
 
 .App-footer {
-  background-color: #454754;
+  background-color: #282c34;
 }
 .footer-logo {
-  width: 50%;
+  width: 80%;
   max-width: 600;
   font-size: calc(10px + 1vmin);
-  padding-top: 4em;
 }
 .footer-logo img {
-  width: 100%;
+  width: 75%;
 }
 .footer-contact {
   font-size: calc(10px + 2vmin);
   text-align: right;
-  padding-top: 2em;
-  padding-bottom: 2em;
+  padding-bottom: 1rem;
 }
 .footer-contact a {
   color: #d3fbd8;
