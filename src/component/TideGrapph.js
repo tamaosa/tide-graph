@@ -1,6 +1,41 @@
 import React from "react";
+import moment from "moment";
 import MyResponsiveLine from "./MyResponsiveLine.js";
 import "../App.css";
+
+function formatData(fetchData, days) {
+  let data = {
+    name: fetchData.name,
+    graph: [
+      {
+        id: fetchData.point,
+        data: []
+      }
+    ],
+    sunrise: [],
+    sunset: [],
+    maxtide: null,
+    mintide: null
+  };
+  let date = moment({ hour: 0 }).subtract(1, "hours");
+  let tideData = [];
+  for (let i = 0; i < days; i++) {
+    let strDate = date.format("YYYY/MM/DD");
+    let dailyData = fetchData.data[strDate];
+    let graphData = dailyData.tide.map(hourlyData => ({
+      x: date.add(1, "hours").format("YYYY/MM/DD HH:mm"),
+      y: hourlyData
+    }));
+    tideData.push(...dailyData.tide);
+    data.graph[0].data.push(...graphData);
+    data.sunrise.push(dailyData.sunrise);
+    data.sunset.push(dailyData.sunset);
+  }
+  data.maxtide = Math.max(...tideData);
+  data.mintide = Math.min(...tideData);
+  console.log(data);
+  return data;
+}
 
 class TideGrapph extends React.Component {
   constructor(props) {
@@ -8,7 +43,8 @@ class TideGrapph extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      items: []
+      items: [],
+      formatDays: 10
     };
   }
 
@@ -32,24 +68,20 @@ class TideGrapph extends React.Component {
   }
 
   render() {
-    const { error, isLoaded, items } = this.state;
-
+    const { error, isLoaded, items, formatDays } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
-      const now = new Date();
-      const date = now.toLocaleDateString("ja");
+      const data = formatData(items, formatDays);
       return (
         <div>
-          <h1 class="App-title">
-            <span style={{ fontSize: "2em" }}>{items.name}</span>
+          <h1 className="App-title">
+            <span style={{ fontSize: "2em" }}>{data.name}</span>
             のタイトグラフ
           </h1>
-          <MyResponsiveLine />
-          <p>{date}</p>
-          <p>{}</p>
+          <MyResponsiveLine data={data} />
         </div>
       );
     }
