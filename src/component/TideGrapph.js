@@ -17,13 +17,15 @@ function formatData(fetchData, days) {
     maxtide: null,
     mintide: null
   };
-  let date = moment({ hour: 0 }).subtract(1, "hours");
   let tideData = [];
   for (let i = 0; i < days; i++) {
+    let date = moment({ hour: 0 }).add(i, "days");
     let strDate = date.format("YYYY/MM/DD");
+    console.log(strDate);
     let dailyData = fetchData.data[strDate];
+    let graphDate = date.subtract(1, "hours");
     let graphData = dailyData.tide.map(hourlyData => ({
-      x: date.add(1, "hours").format("YYYY/MM/DD HH:mm"),
+      x: graphDate.add(1, "hours").format("YYYY/MM/DD HH:mm"),
       y: hourlyData
     }));
     tideData.push(...dailyData.tide);
