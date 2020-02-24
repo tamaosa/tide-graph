@@ -25,7 +25,7 @@ const App = () => (
       <Navbar />
       <main className="App-main">
         <div className="container">
-          <TideGrapph point="test" />
+          <TideGrapph point="A0" />
         </div>
       </main>
       <Footer />

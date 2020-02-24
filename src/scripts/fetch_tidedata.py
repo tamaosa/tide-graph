@@ -37,11 +37,10 @@ def extract_1month(target_year, target_month, point, lat, lon):
                 date_data["low_tide"] = ["--" if i == "999" else int(i)
                                          for i in low_tide]
                 here = ephem.Observer()
-                here.lat = lat
-                here.lon = lon
-                here.date = datetime(year, month, day, 12) - timedelta(days=1)
+                here.lat, here.lon = str(lat), str(lon)
+                here.date = datetime(year, month, day, 3)  # noon JST
                 sun = ephem.Sun()
-                date_data["sunrise"] = ephem.localtime(here.next_rising(sun)).strftime(
+                date_data["sunrise"] = ephem.localtime(here.previous_rising(sun)).strftime(
                     "%H:%M")
                 date_data["sunset"] = ephem.localtime(here.next_setting(sun)).strftime(
                     "%H:%M")
@@ -69,4 +68,4 @@ def fetch_tidedata_2month(point, name, lat, lon):
 if __name__ == "__main__":
     with open('public/test.json', 'w') as f:
         json.dump(fetch_tidedata_2month(
-            "WN", "稚内", 45.24, 141.41), f, ensure_ascii=False, indent=None)
+            "KR", "稚内", 42.59, 144.22), f, ensure_ascii=False, indent=None)

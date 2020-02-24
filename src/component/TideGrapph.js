@@ -51,7 +51,7 @@ class TideGrapph extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`${process.env.PUBLIC_URL}/${this.props.point}.json`)
+    fetch(`${process.env.PUBLIC_URL}/data/${this.props.point}.json`)
       .then(res => res.json())
       .then(
         result => {
