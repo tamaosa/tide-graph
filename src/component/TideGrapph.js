@@ -72,15 +72,30 @@ class TideGrapph extends React.Component {
   render() {
     const { error, isLoaded, items, formatDays } = this.state;
     if (error) {
-      return <div>Error: {error.message}</div>;
+      return (
+        <div>
+          <br />
+          <br />
+          <h1>Error</h1>
+          <p>Error: {error.message}</p>
+          <br />
+        </div>
+      );
     } else if (!isLoaded) {
-      return <div>Loading...</div>;
+      return (
+        <div>
+          <br />
+          <br />
+          <h1>Looding...</h1>
+          <br />
+        </div>
+      );
     } else {
       const data = formatData(items, formatDays);
       return (
         <div>
           <h1 className="App-title">
-            <span style={{ fontSize: "2em" }}>{data.name}</span>
+            <span style={{ fontSize: "1.5em" }}>{data.name}</span>
             のタイトグラフ
           </h1>
           <MyResponsiveLine data={data} />
