@@ -46,7 +46,7 @@ class TideGrapph extends React.Component {
       error: null,
       isLoaded: false,
       items: [],
-      formatDays: 10
+      formatDays: 3
     };
   }
 

@@ -19,8 +19,9 @@
 }
 
 .App-title {
-  margin-left: 4rem;
-  margin-bottom: 2rem;
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   font-size: calc(10px + 3.5vmin);
 }
 
