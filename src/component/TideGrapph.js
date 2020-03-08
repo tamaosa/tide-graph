@@ -21,7 +21,6 @@ function formatData(fetchData, days) {
   for (let i = 0; i < days; i++) {
     let date = moment({ hour: 0 }).add(i, "days");
     let strDate = date.format("YYYY/MM/DD");
-    console.log(strDate);
     let dailyData = fetchData.data[strDate];
     let graphDate = date.subtract(1, "hours");
     let graphData = dailyData.tide.map(hourlyData => ({
@@ -35,7 +34,6 @@ function formatData(fetchData, days) {
   }
   data.maxtide = Math.max(...tideData);
   data.mintide = Math.min(...tideData);
-  console.log(data);
   return data;
 }
 
