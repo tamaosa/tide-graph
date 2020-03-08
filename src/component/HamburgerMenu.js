@@ -16,7 +16,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 
 const useStyles = makeStyles(theme => ({
   menuButton: {
-    marginRight: theme.spacing(4)
+    marginRight: theme.spacing(0.5)
   },
   paper: {
     backgroundColor: theme.palette.primary.dark,

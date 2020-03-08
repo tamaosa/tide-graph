@@ -13,7 +13,7 @@ const useStyles = makeStyles(() => ({
     height: "7.5vh"
   },
   logo: {
-    height: "100%"
+    height: "80%"
   }
 }));
 
