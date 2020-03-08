@@ -13,6 +13,8 @@ import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Toolbar from "@material-ui/core/Toolbar";
+import Link from "@material-ui/core/Link";
+import pointdata from "../point.json";
 
 const useStyles = makeStyles(theme => ({
   menuButton: {
@@ -70,7 +72,7 @@ export default function HamburgerMenu() {
         </Toolbar>
         <Divider />
         <Divider />
-        {["Inbox", "Starred", "Send email", "Drafts"].map(region => (
+        {pointdata.region.list.map(region => (
           <ExpansionPanel classes={{ root: classes.paper }} key={region}>
             <ExpansionPanelSummary
               expandIcon={<ExpandMoreIcon />}
@@ -81,10 +83,14 @@ export default function HamburgerMenu() {
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
               <List onClick={toggleDrawer("left", false)}>
-                {["Inbox", "Starred", "Send email", "Drafts"].map(city => (
-                  <ListItem button key={city}>
-                    <ListItemText primary={city} />
-                  </ListItem>
+                {pointdata.region[region].map(city => (
+                  <div key={city}>
+                    <Link href={`/${pointdata[city].point}`} color="inherit">
+                      <ListItem button>
+                        <ListItemText primary={city} />
+                      </ListItem>
+                    </Link>
+                  </div>
                 ))}
               </List>
             </ExpansionPanelDetails>
