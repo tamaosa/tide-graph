@@ -10,7 +10,7 @@ import pointdata from "./point.json";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#454754",
+      main: "#2C2E34",
       dark: "#282c34",
       contrastText: "#f4f9ff"
     }
