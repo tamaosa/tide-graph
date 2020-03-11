@@ -94,7 +94,7 @@ class TideGrapph extends React.Component {
         <div>
           <h1 className="App-title">
             {data.name}
-            <span style={{ fontSize: "0.7em" }}>のタイトグラフ</span>
+            <span style={{ fontSize: "0.7em" }}>のタイドグラフ</span>
           </h1>
           <MyResponsiveLine data={data} />
         </div>
