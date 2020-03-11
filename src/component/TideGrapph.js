@@ -71,7 +71,7 @@ class TideGrapph extends React.Component {
     const { error, isLoaded, items, formatDays } = this.state;
     if (error) {
       return (
-        <div>
+        <div style={{ height: "100vh" }}>
           <br />
           <br />
           <h1>Error</h1>
@@ -81,7 +81,7 @@ class TideGrapph extends React.Component {
       );
     } else if (!isLoaded) {
       return (
-        <div>
+        <div style={{ height: "100vh" }}>
           <br />
           <br />
           <h1>Looding...</h1>
