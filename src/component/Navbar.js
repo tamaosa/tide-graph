@@ -5,6 +5,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Slide from "@material-ui/core/Slide";
+import Link from "@material-ui/core/Link";
 import logo from "../img/logo1.svg";
 import HamburgerMenu from "./HamburgerMenu.js";
 
@@ -13,7 +14,7 @@ const useStyles = makeStyles(() => ({
     height: "7.5vh"
   },
   logo: {
-    height: "70%"
+    height: "5.5vh"
   }
 }));
 
@@ -48,7 +49,9 @@ export default function(props) {
         <AppBar>
           <Toolbar className={classes.toolbar}>
             <HamburgerMenu />
-            <img src={logo} alt="logo" className={classes.logo} />
+            <Link href={"/"}>
+              <img src={logo} alt="logo" className={classes.logo} />
+            </Link>
           </Toolbar>
         </AppBar>
       </HideOnScroll>

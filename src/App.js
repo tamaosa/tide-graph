@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import "./App.css";
+import Home from "./component/Home.js";
 import Navbar from "./component/Navbar.js";
 import Footer from "./component/Footer.js";
 import TideGrapph from "./component/TideGrapph.js";
@@ -28,7 +29,7 @@ const App = () => (
         <Navbar />
         <main className="App-main">
           <div className="container">
-            <Route exact path="/" render={() => <TideGrapph point="A0" />} />
+            <Route exact path="/" component={Home} />
             {pointdata.list.map(name => (
               <div key={name}>
                 <Route
