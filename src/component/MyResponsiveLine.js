@@ -17,7 +17,7 @@ const MyResponsiveLine = props => {
     legendOffsetY: 15,
     lineStyle: {
       stroke: accentColor,
-      strokeWidth: 1.5
+      strokeWidth: 2
     },
     textStyle: {
       fill: accentColor,
@@ -33,7 +33,7 @@ const MyResponsiveLine = props => {
     legendOffsetY: 15,
     lineStyle: {
       stroke: accentColor,
-      strokeWidth: 1.5
+      strokeWidth: 2
     },
     textStyle: {
       fill: accentColor,
@@ -48,7 +48,7 @@ const MyResponsiveLine = props => {
       <div style={{ height: "75vh", width: "2400px" }}>
         <ResponsiveLine
           data={tide}
-          margin={{ top: 50, right: 50, bottom: 100, left: 100 }}
+          margin={{ top: 50, right: 10, bottom: 80, left: 70 }}
           theme={{
             fontFamily: ['"M PLUS 1p"', "-apple-system", "sans-serif"].join(
               ","
@@ -87,7 +87,7 @@ const MyResponsiveLine = props => {
             tickSize: 10,
             tickPadding: 10,
             legend: "時間 [h]",
-            legendOffset: 55,
+            legendOffset: 50,
             legendPosition: "start"
           }}
           axisTop={{
@@ -101,7 +101,7 @@ const MyResponsiveLine = props => {
             legend: "潮位 [cm]",
             tickSize: 10,
             tickPadding: 10,
-            legendOffset: -50,
+            legendOffset: -60,
             legendPosition: "middle"
           }}
           colors={mainColor}
