@@ -7,7 +7,7 @@ const mainColor = "#0094FA";
 const accentColor = "#D3FBD8";
 
 const MyResponsiveLine = props => {
-  const { graph, sunrise, sunset, maxtide, mintide } = props.data;
+  const { tide, sunrise, sunset, maxtide, mintide } = props.data;
 
   const sunriseMarker = sunrise.map(x => ({
     axis: "x",
@@ -47,7 +47,7 @@ const MyResponsiveLine = props => {
     >
       <div style={{ height: "75vh", width: "2400px" }}>
         <ResponsiveLine
-          data={graph}
+          data={tide}
           margin={{ top: 50, right: 50, bottom: 100, left: 100 }}
           theme={{
             fontFamily: ['"M PLUS 1p"', "-apple-system", "sans-serif"].join(

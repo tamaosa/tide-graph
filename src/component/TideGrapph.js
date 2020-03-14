@@ -1,12 +1,13 @@
 import React from "react";
 import moment from "moment";
 import MyResponsiveLine from "./MyResponsiveLine.js";
+import Table from "./Table.js";
 import "../App.css";
 
 function formatData(fetchData, days) {
-  let data = {
+  let graphData = {
     name: fetchData.name,
-    graph: [
+    tide: [
       {
         id: fetchData.point,
         data: []
@@ -17,24 +18,28 @@ function formatData(fetchData, days) {
     maxtide: null,
     mintide: null
   };
+  let tableData = [];
+
   let tideData = [];
   for (let i = 0; i < days; i++) {
     let date = moment({ hour: 0 }).add(i, "days");
     let strDate = date.format("YYYY/MM/DD");
     let dailyData = fetchData.data[strDate];
+
+    tableData.push(dailyData);
     let graphDate = date.subtract(1, "hours");
-    let graphData = dailyData.tide.map(hourlyData => ({
+    let coordinate = dailyData.tide.map(hourlyData => ({
       x: graphDate.add(1, "hours").format("YYYY/MM/DD HH:mm"),
       y: hourlyData
     }));
     tideData.push(...dailyData.tide);
-    data.graph[0].data.push(...graphData);
-    data.sunrise.push(strDate + " " + dailyData.sunrise);
-    data.sunset.push(strDate + " " + dailyData.sunset);
+    graphData.tide[0].data.push(...coordinate);
+    graphData.sunrise.push(strDate + " " + dailyData.sunrise);
+    graphData.sunset.push(strDate + " " + dailyData.sunset);
   }
-  data.maxtide = Math.max(...tideData);
-  data.mintide = Math.min(...tideData);
-  return data;
+  graphData.maxtide = Math.max(...tideData);
+  graphData.mintide = Math.min(...tideData);
+  return { graphData, tableData };
 }
 
 class TideGrapph extends React.Component {
@@ -89,14 +94,15 @@ class TideGrapph extends React.Component {
         </div>
       );
     } else {
-      const data = formatData(items, formatDays);
+      const { graphData, tableData } = formatData(items, formatDays);
       return (
         <div>
           <h1 className="App-title">
-            {data.name}
+            {graphData.name}
             <span style={{ fontSize: "0.7em" }}>のタイドグラフ</span>
           </h1>
-          <MyResponsiveLine data={data} />
+          <MyResponsiveLine data={graphData} />
+          <Table data={tableData} />
         </div>
       );
     }
