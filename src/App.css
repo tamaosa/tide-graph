@@ -30,11 +30,12 @@
 }
 .footer-logo {
   width: 80%;
-  max-width: 420px;
+  max-width: 720px;
   font-size: calc(10px + 1vmin);
 }
 .footer-logo img {
   width: 75%;
+  max-width: 240px;
 }
 .footer-contact {
   font-size: calc(10px + 2vmin);
