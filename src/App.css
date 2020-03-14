@@ -1,15 +1,15 @@
+:root {
+  --main-color: #282c34;
+  --dark-color: #282e34;
+  --txt-color: #f4f9ff;
+  --theme-color: #0094fa;
+  --accent-color: #d3fbd8;
+  background-color: var(--main-color);
+  color: var(--txt-color);
+}
+
 .App {
-  background-color: #282c34;
-  color: #f4f9ff;
-}
-
-.App-navbar {
   font-size: calc(10px + 2vmin);
-}
-
-.App-main {
-  font-size: calc(10px + 2vmin);
-  margin-bottom: 5rem;
 }
 
 .container {
@@ -18,15 +18,32 @@
   margin: 0 auto;
 }
 
-.App-title {
+.App-contents h1 {
   margin-left: 1rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   font-size: calc(10px + 3.5vmin);
 }
 
+/* table */
+.table-content {
+  margin-top: 1rem;
+}
+
+/* 404, err, loading */
+.simple-content {
+  width: 100%;
+  margin: 5rem 0;
+}
+
+/* navbar */
+.App-navbar {
+  font-size: calc(10px + 2vmin);
+}
+
+/* footer */
 .App-footer {
-  background-color: #282c34;
+  margin-top: 5rem;
 }
 .footer-logo {
   width: 80%;
@@ -43,5 +60,5 @@
   padding-bottom: 1rem;
 }
 .footer-contact a {
-  color: #d3fbd8;
+  color: var(--accent-color);
 }

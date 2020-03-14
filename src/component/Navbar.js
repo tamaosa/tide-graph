@@ -9,12 +9,12 @@ import Link from "@material-ui/core/Link";
 import logo from "../img/logo1.svg";
 import HamburgerMenu from "./HamburgerMenu.js";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   toolbar: {
-    height: "7.5vh"
+    height: theme.navbar.height
   },
   logo: {
-    height: "5.5vh"
+    height: theme.navbar.logoHeight
   }
 }));
 

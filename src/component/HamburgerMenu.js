@@ -21,11 +21,11 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(0.5)
   },
   paper: {
-    backgroundColor: theme.palette.primary.dark,
+    backgroundColor: theme.palette.primary.original,
     color: theme.palette.primary.contrastText
   },
   toolbar: {
-    height: "7.5vh"
+    height: theme.navbar.height
   }
 }));
 

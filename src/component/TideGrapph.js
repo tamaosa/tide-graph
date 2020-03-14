@@ -76,28 +76,22 @@ class TideGrapph extends React.Component {
     const { error, isLoaded, items, formatDays } = this.state;
     if (error) {
       return (
-        <div style={{ height: "100vh" }}>
-          <br />
-          <br />
+        <div className="simple-content">
           <h1>Error</h1>
           <p>Error: {error.message}</p>
-          <br />
         </div>
       );
     } else if (!isLoaded) {
       return (
-        <div style={{ height: "100vh" }}>
-          <br />
-          <br />
+        <div className="simple-content">
           <h1>Looding...</h1>
-          <br />
         </div>
       );
     } else {
       const { graphData, tableData } = formatData(items, formatDays);
       return (
-        <div>
-          <h1 className="App-title">
+        <div className="App-contents">
+          <h1>
             {graphData.name}
             <span style={{ fontSize: "0.7em" }}>のタイドグラフ</span>
           </h1>

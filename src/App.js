@@ -8,18 +8,23 @@ import Navbar from "./component/Navbar.js";
 import Footer from "./component/Footer.js";
 import TideGrapph from "./component/TideGrapph.js";
 import pointdata from "./point.json";
+import colorPallet from "./colorPallet.js";
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#2C2E34",
-      dark: "#282c34",
-      contrastText: "#f4f9ff"
+      main: colorPallet.dark,
+      original: colorPallet.main,
+      contrastText: colorPallet.txt
     }
   },
   typography: {
     fontFamily: ['"M PLUS 1p"', "-apple-system", "sans-serif"].join(","),
     fontSize: 15
+  },
+  navbar: {
+    height: "7.5vh",
+    logoHeight: "5.5vh"
   }
 });
 
@@ -28,7 +33,7 @@ const App = () => (
     <div className="App">
       <ThemeProvider theme={theme}>
         <Navbar />
-        <main className="App-main">
+        <main>
           <div className="container">
             <Switch>
               <Route exact path="/" component={Home} />

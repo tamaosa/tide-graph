@@ -7,10 +7,11 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import "../App.css";
 
 const StyledTableCell = withStyles(theme => ({
   root: {
-    backgroundColor: theme.palette.primary.dark,
+    backgroundColor: theme.palette.primary.original,
     color: theme.palette.primary.contrastText
   }
 }))(TableCell);
@@ -24,10 +25,9 @@ const useStyles = makeStyles({
 export default function SimpleTable(props) {
   const classes = useStyles();
   const rows = props.data;
-  console.log(rows);
 
   return (
-    <div style={{ marginTop: "2.5rem" }}>
+    <div className="table-content">
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>

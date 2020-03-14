@@ -1,14 +1,10 @@
 import React from "react";
 import { ResponsiveLine } from "@nivo/line";
-
-const textColor = "#F4F9FF";
-const baseColor = "#282c34";
-const mainColor = "#0094FA";
-const accentColor = "#D3FBD8";
+import colorPallet from "../colorPallet.js";
 
 const MyResponsiveLine = props => {
   const { tide, sunrise, sunset, maxtide, mintide } = props.data;
-
+  const accentColor = colorPallet.accent;
   const sunriseMarker = sunrise.map(x => ({
     axis: "x",
     value: new Date(x),
@@ -53,9 +49,9 @@ const MyResponsiveLine = props => {
             fontFamily: ['"M PLUS 1p"', "-apple-system", "sans-serif"].join(
               ","
             ),
-            background: baseColor,
+            background: colorPallet.main,
             fontSize: 12,
-            textColor: textColor,
+            textColor: colorPallet.txt,
             axis: {
               legend: {
                 text: {
@@ -104,7 +100,7 @@ const MyResponsiveLine = props => {
             legendOffset: -60,
             legendPosition: "middle"
           }}
-          colors={mainColor}
+          colors={colorPallet.theme}
           enablePoints={false}
           isInteractive={false}
           markers={sunriseMarker.concat(sunsetMarker)}
