@@ -30,6 +30,23 @@
   margin-top: 1rem;
 }
 
+/* map */
+.map-content {
+  margin-top: 2.5rem;
+}
+
+.map-content p {
+  text-align: center;
+  margin: 0;
+  font-size: calc(5px + 2vmin);
+}
+
+.leaflet-container {
+  width: 90%;
+  height: 55vh;
+  margin: 0 auto;
+}
+
 /* 404, err, loading */
 .simple-content {
   width: 100%;

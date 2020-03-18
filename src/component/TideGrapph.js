@@ -3,6 +3,7 @@ import moment from "moment";
 import MyResponsiveLine from "./MyResponsiveLine.js";
 import Table from "./Table.js";
 import "../App.css";
+import MapPoint from "./MapPoint.js";
 
 function formatData(fetchData, days) {
   let graphData = {
@@ -19,6 +20,7 @@ function formatData(fetchData, days) {
     mintide: null
   };
   let tableData = [];
+  let mapData = [fetchData.lat, fetchData.lon];
 
   let tideData = [];
   for (let i = 0; i < days; i++) {
@@ -39,7 +41,7 @@ function formatData(fetchData, days) {
   }
   graphData.maxtide = Math.max(...tideData);
   graphData.mintide = Math.min(...tideData);
-  return { graphData, tableData };
+  return { graphData, tableData, mapData };
 }
 
 class TideGrapph extends React.Component {
@@ -88,7 +90,7 @@ class TideGrapph extends React.Component {
         </div>
       );
     } else {
-      const { graphData, tableData } = formatData(items, formatDays);
+      const { graphData, tableData, mapData } = formatData(items, formatDays);
       return (
         <div className="App-contents">
           <h1>
@@ -97,6 +99,7 @@ class TideGrapph extends React.Component {
           </h1>
           <MyResponsiveLine data={graphData} />
           <Table data={tableData} />
+          <MapPoint data={mapData} zoom={8} />
         </div>
       );
     }
