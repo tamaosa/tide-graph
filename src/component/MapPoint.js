@@ -20,14 +20,15 @@ export default function SimpleExample(props) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {pointdata.list.map(city => (
-          <Marker position={[pointdata[city].lat, pointdata[city].lon]}>
-            {console.log([pointdata[city].lat, pointdata[city].lon])}
-            <Popup>
-              <Link href={`/${pointdata[city].point}`} color="inherit">
-                <Typography>{city}</Typography>
-              </Link>
-            </Popup>
-          </Marker>
+          <div key={city}>
+            <Marker position={[pointdata[city].lat, pointdata[city].lon]}>
+              <Popup>
+                <Link href={`/${pointdata[city].point}`} color="inherit">
+                  <Typography>{city}</Typography>
+                </Link>
+              </Popup>
+            </Marker>
+          </div>
         ))}
       </Map>
     </div>

@@ -18,7 +18,7 @@ const StyledTableCell = withStyles(theme => ({
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 360
+    minWidth: 240
   }
 });
 

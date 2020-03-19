@@ -49,7 +49,7 @@ export default function(props) {
         <AppBar>
           <Toolbar className={classes.toolbar}>
             <HamburgerMenu />
-            <Link href={"/"}>
+            <Link href={"/"} className={classes.logo}>
               <img src={logo} alt="logo" className={classes.logo} />
             </Link>
           </Toolbar>

@@ -41,7 +41,7 @@ const MyResponsiveLine = props => {
     <div
       style={{ overflowX: "scroll", overflowY: "hidden", whiteSpace: "nowrap" }}
     >
-      <div style={{ height: "75vh", width: "2400px" }}>
+      <div style={{ height: "75vh", width: "2800px" }}>
         <ResponsiveLine
           data={tide}
           margin={{ top: 50, right: 10, bottom: 80, left: 70 }}

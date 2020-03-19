@@ -51,7 +51,7 @@ class TideGrapph extends React.Component {
       error: null,
       isLoaded: false,
       items: [],
-      formatDays: 3
+      formatDays: 5
     };
   }
 
@@ -99,7 +99,7 @@ class TideGrapph extends React.Component {
           </h1>
           <MyResponsiveLine data={graphData} />
           <Table data={tableData} />
-          <MapPoint data={mapData} zoom={8} />
+          <MapPoint data={mapData} zoom={10} />
         </div>
       );
     }

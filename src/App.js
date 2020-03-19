@@ -24,7 +24,7 @@ const theme = createMuiTheme({
   },
   navbar: {
     height: "7.5vh",
-    logoHeight: "5.5vh"
+    logoHeight: "80%"
   }
 });
 
