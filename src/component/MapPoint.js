@@ -21,6 +21,7 @@ export default function SimpleExample(props) {
         />
         {pointdata.list.map(city => (
           <Marker position={[pointdata[city].lat, pointdata[city].lon]}>
+            {console.log([pointdata[city].lat, pointdata[city].lon])}
             <Popup>
               <Link href={`/${pointdata[city].point}`} color="inherit">
                 <Typography>{city}</Typography>
