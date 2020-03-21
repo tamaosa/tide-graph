@@ -32,11 +32,11 @@ class Home extends React.Component {
           <p>
             Tideyでは全国239地点のシンプルなタイトグラフを配信しています。釣り
             <span role="img" aria-label="fishing">
-              🎣🎣
+              🎣
             </span>
             やサーフィン
             <span role="img" aria-label="surfing">
-              🏄🏄
+              🏄
             </span>
             のお供にぜひどうぞ。
           </p>

@@ -90,7 +90,11 @@
 /* 404, err, loading */
 .simple-content {
   width: 100%;
-  margin: 5rem 0;
+  height: 80vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* navbar */

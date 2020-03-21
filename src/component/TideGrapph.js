@@ -79,8 +79,10 @@ class TideGrapph extends React.Component {
     if (error) {
       return (
         <div className="simple-content">
-          <h1>Error</h1>
-          <p>Error: {error.message}</p>
+          <div>
+            <h1>Error</h1>
+            <p>Error: {error.message}</p>
+          </div>
         </div>
       );
     } else if (!isLoaded) {

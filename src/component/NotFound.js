@@ -3,8 +3,10 @@ import "../App.css";
 
 const NotFound = () => (
   <div className="simple-content">
-    <h1>...Not Found</h1>
-    <p>ページが見つかりませんでした</p>
+    <div>
+      <h1>...Not Found</h1>
+      <p>ページが見つかりませんでした</p>
+    </div>
   </div>
 );
 
