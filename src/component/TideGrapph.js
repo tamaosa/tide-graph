@@ -86,7 +86,7 @@ class TideGrapph extends React.Component {
     } else if (!isLoaded) {
       return (
         <div className="simple-content">
-          <h1>Looding...</h1>
+          <div className="loader">Loading...</div>
         </div>
       );
     } else {
