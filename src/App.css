@@ -48,6 +48,44 @@
   margin: 0 auto;
 }
 
+.title-content {
+  width: 100%;
+  height: 80vh;
+  margin-bottom: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation-name: fadein;
+  animation-duration: 2s;
+}
+.title-text {
+  text-align: center;
+  color: var(--accent-color);
+}
+.title-text h1 {
+  font-size: calc(20px + 10vmin);
+  margin: 0;
+}
+.title-text p {
+  font-size: calc(12px + 1vmin);
+  margin: 0;
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translateY(10vh);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.explanation-content {
+  width: 100%;
+  font-size: calc(12px + 1vmin);
+}
+
 /* 404, err, loading */
 .simple-content {
   width: 100%;
@@ -78,5 +116,5 @@
   padding-bottom: 1rem;
 }
 .footer-contact a {
-  color: var(--accent-color);
+  color: var(--theme-color);
 }

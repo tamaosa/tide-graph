@@ -99,7 +99,10 @@ class TideGrapph extends React.Component {
           </h1>
           <MyResponsiveLine data={graphData} />
           <Table data={tableData} />
-          <MapPoint data={mapData} zoom={10} />
+          <div className="map-content">
+            <p>周辺地域</p>
+            <MapPoint data={mapData} zoom={10} />
+          </div>
         </div>
       );
     }
