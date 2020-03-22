@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import "./App.css";
 import Home from "./component/Home.js";
@@ -9,6 +9,15 @@ import Footer from "./component/Footer.js";
 import TideGrapph from "./component/TideGrapph.js";
 import pointdata from "./point.json";
 import colorPallet from "./colorPallet.js";
+
+import createHistory from "history/createBrowserHistory";
+import ReactGA from "react-ga";
+
+const history = createHistory();
+history.listen(location => {
+  ReactGA.set({ page: location.pathname });
+  ReactGA.pageview(location.pathname);
+});
 
 const theme = createMuiTheme({
   palette: {
@@ -28,31 +37,39 @@ const theme = createMuiTheme({
   }
 });
 
-const App = () => (
-  <BrowserRouter>
-    <div className="App">
-      <ThemeProvider theme={theme}>
-        <Navbar />
-        <main>
-          <div className="container">
-            <Switch>
-              <Route exact path="/" component={Home} />
-              {pointdata.list.map(name => (
-                <Route
-                  key={name}
-                  exact
-                  path={"/" + pointdata[name].point}
-                  render={() => <TideGrapph point={pointdata[name].point} />}
-                />
-              ))}
-              <Route component={NotFound} />
-            </Switch>
-          </div>
-        </main>
-        <Footer />
-      </ThemeProvider>
-    </div>
-  </BrowserRouter>
-);
+export default class App extends React.Component {
+  componentDidMount() {
+    ReactGA.pageview(window.location.pathname);
+  }
 
-export default App;
+  render() {
+    return (
+      <Router history={history}>
+        <div className="App">
+          <ThemeProvider theme={theme}>
+            <Navbar />
+            <main>
+              <div className="container">
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  {pointdata.list.map(name => (
+                    <Route
+                      key={name}
+                      exact
+                      path={"/" + pointdata[name].point}
+                      render={() => (
+                        <TideGrapph point={pointdata[name].point} />
+                      )}
+                    />
+                  ))}
+                  <Route component={NotFound} />
+                </Switch>
+              </div>
+            </main>
+            <Footer />
+          </ThemeProvider>
+        </div>
+      </Router>
+    );
+  }
+}
