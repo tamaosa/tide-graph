@@ -8,25 +8,21 @@ import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Toolbar from "@material-ui/core/Toolbar";
 import Link from "@material-ui/core/Link";
 import pointdata from "../point.json";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   menuButton: {
-    marginRight: theme.spacing(0.5)
+    marginRight: theme.spacing(0.5),
   },
   paper: {
     backgroundColor: theme.palette.primary.original,
-    color: theme.palette.primary.contrastText
+    color: theme.palette.primary.contrastText,
   },
   toolbar: {
-    height: theme.navbar.height
-  }
+    height: theme.navbar.height,
+  },
 }));
 
 export default function HamburgerMenu() {
@@ -34,9 +30,9 @@ export default function HamburgerMenu() {
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
   const [state, setState] = React.useState({
     left: false,
-    right: false
+    right: false,
   });
-  const toggleDrawer = (side, open) => event => {
+  const toggleDrawer = (side, open) => (event) => {
     if (
       event &&
       event.type === "keydown" &&
@@ -72,29 +68,17 @@ export default function HamburgerMenu() {
         </Toolbar>
         <Divider />
         <Divider />
-        {pointdata.region.list.map(region => (
-          <ExpansionPanel classes={{ root: classes.paper }} key={region}>
-            <ExpansionPanelSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls={region}
-              id={region}
-            >
-              <Typography>{region}</Typography>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <List onClick={toggleDrawer("left", false)}>
-                {pointdata.region[region].map(city => (
-                  <div key={city}>
-                    <Link href={`/${pointdata[city].point}`} color="inherit">
-                      <ListItem button>
-                        <ListItemText primary={city} />
-                      </ListItem>
-                    </Link>
-                  </div>
-                ))}
-              </List>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
+        <List onClick={toggleDrawer("left", false)}>
+          {pointdata.region.list.map((region, i) => (
+            <div key={region}>
+              <Link href={`/${pointdata.region.point[i]}`} color="inherit">
+                <ListItem button>
+                  <ListItemText primary={region} />
+                </ListItem>
+              </Link>
+            </div>
+          ))}
+        </List>
         ))}
       </SwipeableDrawer>
     </div>

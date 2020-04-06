@@ -1,4 +1,5 @@
 import React from "react";
+import RegionRoll from "./RegionRoll";
 import MapPoint from "./MapPoint";
 import "../App.css";
 
@@ -6,18 +7,18 @@ class Home extends React.Component {
   state = {
     lat: 36,
     lon: 138,
-    zoom: 3
+    zoom: 3,
   };
 
   render() {
     navigator.geolocation.getCurrentPosition(
-      pos =>
+      (pos) =>
         this.setState({
           lat: pos.coords.latitude,
           lon: pos.coords.longitude,
-          zoom: 9
+          zoom: 9,
         }),
-      err => console.log(err)
+      (err) => console.log(err)
     );
 
     return (
@@ -43,6 +44,10 @@ class Home extends React.Component {
         </div>
         <div className="map-content">
           <h3>地域を探す</h3>
+          <RegionRoll />
+        </div>
+        <div className="map-content">
+          <h3>地図から探す</h3>
           <MapPoint
             data={[this.state.lat, this.state.lon]}
             zoom={this.state.zoom}
