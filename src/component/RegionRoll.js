@@ -27,7 +27,7 @@ export default function AutoGrid() {
         {pointdata.region.list.map((region, i) => (
           <Grid item xs={12} sm={6} lg={3} key={region}>
             <Link href={`/${pointdata.region.point[i]}`} color="inherit">
-              <Paper className={classes.paper}>
+              <Paper elevation={0} className={classes.paper}>
                 <Typography>{region}</Typography>
               </Paper>
             </Link>

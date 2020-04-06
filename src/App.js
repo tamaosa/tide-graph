@@ -26,6 +26,7 @@ const theme = createMuiTheme({
       main: colorPallet.dark,
       original: colorPallet.main,
       contrastText: colorPallet.txt,
+      theme: colorPallet.theme,
     },
   },
   typography: {

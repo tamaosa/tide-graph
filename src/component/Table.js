@@ -9,17 +9,17 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import "../App.css";
 
-const StyledTableCell = withStyles(theme => ({
+const StyledTableCell = withStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.primary.original,
-    color: theme.palette.primary.contrastText
-  }
+    color: theme.palette.primary.contrastText,
+  },
 }))(TableCell);
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 240
-  }
+    minWidth: 240,
+  },
 });
 
 export default function SimpleTable(props) {
@@ -28,7 +28,7 @@ export default function SimpleTable(props) {
 
   return (
     <div className="table-content">
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} elevation={0}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
@@ -40,7 +40,7 @@ export default function SimpleTable(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map(row => (
+            {rows.map((row) => (
               <TableRow key={row.date}>
                 <StyledTableCell component="th" scope="row">
                   {row.date}

@@ -31,7 +31,7 @@ class Home extends React.Component {
         </div>
         <div className="explanation-content">
           <p>
-            Tideyでは全国239地点のシンプルなタイトグラフを配信しています。釣り
+            Tideyでは全国237地点のシンプルなタイトグラフを配信しています。釣り
             <span role="img" aria-label="fishing">
               🎣
             </span>

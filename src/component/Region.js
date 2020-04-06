@@ -28,9 +28,9 @@ export default function Region(props) {
       <div className={classes.root}>
         <Grid container spacing={2}>
           {pointdata.region[props.name].map((city, i) => (
-            <Grid item xs={12} sm={6} lg={3} key={city}>
+            <Grid item xs={6} sm={4} lg={2} key={city}>
               <Link href={`/${pointdata[city].point}`} color="inherit">
-                <Paper className={classes.paper}>
+                <Paper elevation={0} className={classes.paper}>
                   <Typography>{city}</Typography>
                 </Paper>
               </Link>
