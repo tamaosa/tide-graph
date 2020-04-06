@@ -79,7 +79,6 @@ export default function HamburgerMenu() {
             </div>
           ))}
         </List>
-        ))}
       </SwipeableDrawer>
     </div>
   );
