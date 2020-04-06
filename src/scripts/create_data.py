@@ -47,5 +47,5 @@ def cretate_pointdata():
 
 
 if __name__ == "__main__":
-    # create_tidedata()
-    cretate_pointdata()
+    create_tidedata()
+    # cretate_pointdata()
