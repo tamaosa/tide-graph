@@ -42,7 +42,7 @@ class Home extends React.Component {
             のお供にぜひどうぞ。
           </p>
         </div>
-        <div className="map-content">
+        <div className="region-content">
           <h3>地域を探す</h3>
           <RegionRoll />
         </div>

@@ -10,14 +10,27 @@ import pointdata from "../point.json";
 Leaflet.Icon.Default.imagePath =
   "//cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/images/";
 
+function isPC() {
+  if (navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
 export default function MapPoint(props) {
   return (
-    <Map center={props.data} zoom={props.zoom}>
+    <Map
+      center={props.data}
+      zoom={props.zoom}
+      scrollWheelZoom={isPC()}
+      dragging={isPC()}
+    >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {pointdata.list.map(city => (
+      {pointdata.list.map((city) => (
         <div key={city}>
           <Marker position={[pointdata[city].lat, pointdata[city].lon]}>
             <Popup>
