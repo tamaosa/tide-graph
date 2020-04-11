@@ -65,7 +65,7 @@
   justify-content: center;
   align-items: center;
   animation-name: fadein;
-  animation-duration: 2s;
+  animation-duration: 1s;
 }
 .title-text {
   text-align: center;
@@ -82,7 +82,7 @@
 @keyframes fadein {
   from {
     opacity: 0;
-    transform: translateY(10vh);
+    transform: translateY(5vh);
   }
   to {
     opacity: 1;

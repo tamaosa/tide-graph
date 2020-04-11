@@ -1,9 +1,9 @@
 import React from "react";
 import moment from "moment";
-import MyResponsiveLine from "./MyResponsiveLine.js";
-import Table from "./Table.js";
+import MyResponsiveLine from "../component/MyResponsiveLine.js";
+import Table from "../component/Table.js";
+import MapPoint from "../component/MapPoint.js";
 import "../App.css";
-import MapPoint from "./MapPoint.js";
 
 function formatData(fetchData, days) {
   let graphData = {
@@ -11,13 +11,13 @@ function formatData(fetchData, days) {
     tide: [
       {
         id: fetchData.point,
-        data: []
-      }
+        data: [],
+      },
     ],
     sunrise: [],
     sunset: [],
     maxtide: null,
-    mintide: null
+    mintide: null,
   };
   let tableData = [];
   let mapData = [fetchData.lat, fetchData.lon];
@@ -30,9 +30,9 @@ function formatData(fetchData, days) {
 
     tableData.push(dailyData);
     let graphDate = date.subtract(1, "hours");
-    let coordinate = dailyData.tide.map(hourlyData => ({
+    let coordinate = dailyData.tide.map((hourlyData) => ({
       x: graphDate.add(1, "hours").format("YYYY/MM/DD HH:mm"),
-      y: hourlyData
+      y: hourlyData,
     }));
     tideData.push(...dailyData.tide);
     graphData.tide[0].data.push(...coordinate);
@@ -51,24 +51,24 @@ class TideGrapph extends React.Component {
       error: null,
       isLoaded: false,
       items: [],
-      formatDays: 5
+      formatDays: 5,
     };
   }
 
   componentDidMount() {
     fetch(`${process.env.PUBLIC_URL}/data/${this.props.point}.json`)
-      .then(res => res.json())
+      .then((res) => res.json())
       .then(
-        result => {
+        (result) => {
           this.setState({
             isLoaded: true,
-            items: result
+            items: result,
           });
         },
-        error => {
+        (error) => {
           this.setState({
             isLoaded: true,
-            error
+            error,
           });
         }
       );
