@@ -42,12 +42,12 @@ class Home extends React.Component {
             のお供にぜひどうぞ。
           </p>
         </div>
+        <h3>地域から探す</h3>
         <div className="region-content">
-          <h3>地域を探す</h3>
           <RegionRoll />
         </div>
+        <h3>地図から探す</h3>
         <div className="map-content">
-          <h3>地図から探す</h3>
           <MapPoint
             data={[this.state.lat, this.state.lon]}
             zoom={this.state.zoom}
