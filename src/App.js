@@ -47,7 +47,7 @@ const Map = () => (
       height: "100vh",
     }}
   >
-    <MapPoint data={[38, 136]} zoom={5} operation={true} />
+    <MapPoint data={[36, 138]} zoom={5} operation={true} />
   </div>
 );
 

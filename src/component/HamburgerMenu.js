@@ -7,9 +7,9 @@ import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
 import Toolbar from "@material-ui/core/Toolbar";
 import Link from "@material-ui/core/Link";
+import logo from "../img/logo1.svg";
 import pointdata from "../point.json";
 
 const useStyles = makeStyles((theme) => ({
@@ -64,16 +64,25 @@ export default function HamburgerMenu() {
         disableDiscovery={iOS}
       >
         <Toolbar className={classes.toolbar}>
-          <Typography variant="h6">地域一覧</Typography>
+          <Link href={"/"} className={classes.logo}>
+            <img src={logo} alt="logo" style={{ width: "6rem" }} />
+          </Link>
         </Toolbar>
         <Divider />
         <Divider />
         <List onClick={toggleDrawer("left", false)}>
+          <Link href="/map" color="inherit">
+            <ListItem button>
+              <Typography gutterBottom>地図を表示</Typography>
+            </ListItem>
+          </Link>
+          <Divider />
+          <Divider />
           {pointdata.region.list.map((region, i) => (
             <div key={region}>
               <Link href={`/${pointdata.region.point[i]}`} color="inherit">
                 <ListItem button>
-                  <ListItemText primary={region} />
+                  <Typography>{region}</Typography>
                 </ListItem>
               </Link>
             </div>
