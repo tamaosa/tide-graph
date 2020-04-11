@@ -21,13 +21,20 @@ function isPC() {
 }
 
 export default function MapPoint(props) {
+  const operation =
+    typeof props.operation === "undefined" ? isPC() : props.operation;
+
   return (
-    <div>
+    <div
+      style={{
+        height: "100%",
+      }}
+    >
       <Map
         center={props.data}
         zoom={props.zoom}
-        scrollWheelZoom={isPC()}
-        dragging={isPC()}
+        scrollWheelZoom={operation}
+        dragging={operation}
       >
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -47,7 +54,7 @@ export default function MapPoint(props) {
           ))}
         </MarkerClusterGroup>
       </Map>
-      {!isPC() && (
+      {!operation && (
         <p style={{ fontSize: "0.5em" }}>
           地図を操作するには2本指を使用して下さい
         </p>

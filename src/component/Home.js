@@ -7,20 +7,10 @@ class Home extends React.Component {
   state = {
     lat: 36,
     lon: 138,
-    zoom: 3,
+    zoom: 5,
   };
 
   render() {
-    navigator.geolocation.getCurrentPosition(
-      (pos) =>
-        this.setState({
-          lat: pos.coords.latitude,
-          lon: pos.coords.longitude,
-          zoom: 9,
-        }),
-      (err) => console.log(err)
-    );
-
     return (
       <div>
         <div className="title-content">

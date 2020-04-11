@@ -8,6 +8,7 @@ import Navbar from "./component/Navbar.js";
 import Footer from "./component/Footer.js";
 import TideGrapph from "./component/TideGrapph.js";
 import Region from "./component/Region.js";
+import MapPoint from "./component/MapPoint.js";
 import pointdata from "./point.json";
 import colorPallet from "./colorPallet.js";
 
@@ -39,6 +40,17 @@ const theme = createMuiTheme({
   },
 });
 
+const Map = () => (
+  <div
+    style={{
+      width: "100%",
+      height: "100vh",
+    }}
+  >
+    <MapPoint data={[38, 136]} zoom={5} operation={true} />
+  </div>
+);
+
 export default class App extends React.Component {
   componentDidMount() {
     ReactGA.pageview(window.location.pathname);
@@ -54,6 +66,7 @@ export default class App extends React.Component {
               <div className="container">
                 <Switch>
                   <Route exact path="/" component={Home} />
+                  <Route exact path="/map" component={Map} />
                   {pointdata.region.list.map((region, i) => (
                     <Route
                       key={region}
