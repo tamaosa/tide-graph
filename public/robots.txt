@@ -1,5 +1,3 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 
-# Redirect default Netlify subdomain to primary domain
-https://tidey.netlify.com/* https://www.tidey.work/:splat 301!
