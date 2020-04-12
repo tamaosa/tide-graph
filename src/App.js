@@ -49,11 +49,17 @@ export default class App extends React.Component {
   render() {
     return (
       <Router history={history}>
-        <Suspense fallback={<div>Loading...</div>}>
-          <div className="App">
-            <ThemeProvider theme={theme}>
-              <Navbar />
-              <main>
+        <div className="App">
+          <ThemeProvider theme={theme}>
+            <Navbar />
+            <main>
+              <Suspense
+                fallback={
+                  <div className="simple-content">
+                    {/* <div className="loader">Loading...</div> */}
+                  </div>
+                }
+              >
                 <div className="container">
                   <Switch>
                     <Route exact path="/" component={Home} />
@@ -85,11 +91,11 @@ export default class App extends React.Component {
                     <Route component={NotFound} />
                   </Switch>
                 </div>
-              </main>
-              <Footer />
-            </ThemeProvider>
-          </div>
-        </Suspense>
+              </Suspense>
+            </main>
+            <Footer />
+          </ThemeProvider>
+        </div>
       </Router>
     );
   }
