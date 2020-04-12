@@ -1,9 +1,24 @@
-:root {
-  --main-color: #282c34;
-  --dark-color: #282e34;
-  --txt-color: #f4f9ff;
-  --theme-color: #0094fa;
-  --accent-color: #d3fbd8;
+@media (prefers-color-scheme: light) {
+  :root {
+    --main-color: #ffffff;
+    --dark-color: #0094fa;
+    --txt-color: #3f4756;
+    --theme-color: #0094fa;
+    --accent-color: #ef5d8b;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --main-color: #282c34;
+    --dark-color: #282e34;
+    --txt-color: #f4f9ff;
+    --theme-color: #0094fa;
+    --accent-color: #d3fbd8;
+  }
+}
+
+body {
   background-color: var(--main-color);
   color: var(--txt-color);
 }

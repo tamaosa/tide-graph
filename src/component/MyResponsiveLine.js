@@ -2,10 +2,10 @@ import React from "react";
 import { ResponsiveLine } from "@nivo/line";
 import colorPallet from "../colorPallet.js";
 
-const MyResponsiveLine = props => {
+const MyResponsiveLine = (props) => {
   const { tide, sunrise, sunset, maxtide, mintide } = props.data;
   const accentColor = colorPallet.accent;
-  const sunriseMarker = sunrise.map(x => ({
+  const sunriseMarker = sunrise.map((x) => ({
     axis: "x",
     value: new Date(x),
     legend: "日の出",
@@ -13,15 +13,15 @@ const MyResponsiveLine = props => {
     legendOffsetY: 15,
     lineStyle: {
       stroke: accentColor,
-      strokeWidth: 2
+      strokeWidth: 2,
     },
     textStyle: {
       fill: accentColor,
-      fontSize: 12
-    }
+      fontSize: 12,
+    },
   }));
 
-  const sunsetMarker = sunset.map(x => ({
+  const sunsetMarker = sunset.map((x) => ({
     axis: "x",
     value: new Date(x),
     legend: "日の入り",
@@ -29,12 +29,12 @@ const MyResponsiveLine = props => {
     legendOffsetY: 15,
     lineStyle: {
       stroke: accentColor,
-      strokeWidth: 2
+      strokeWidth: 2,
     },
     textStyle: {
       fill: accentColor,
-      fontSize: 12
-    }
+      fontSize: 12,
+    },
   }));
 
   return (
@@ -55,25 +55,25 @@ const MyResponsiveLine = props => {
             axis: {
               legend: {
                 text: {
-                  fontSize: 18
-                }
-              }
-            }
+                  fontSize: 18,
+                },
+              },
+            },
           }}
           xScale={{
             type: "time",
             format: "%Y/%m/%d %H:%M",
-            useUTC: false
+            useUTC: false,
           }}
           xFormat="time:%H:%M"
           yScale={{
             type: "linear",
             min: mintide,
-            max: maxtide
+            max: maxtide,
           }}
           curve="basis"
           lineWidth={5}
-          enableArea={true}
+          enableArea={false}
           areaBaselineValue={mintide}
           areaOpacity={0.05}
           axisBottom={{
@@ -84,13 +84,13 @@ const MyResponsiveLine = props => {
             tickPadding: 10,
             legend: "時間 [h]",
             legendOffset: 50,
-            legendPosition: "start"
+            legendPosition: "start",
           }}
           axisTop={{
             format: "%m/%d",
             tickValues: "every day",
             tickSize: 10,
-            tickPadding: 20
+            tickPadding: 20,
           }}
           axisLeft={{
             orient: "left",
@@ -98,7 +98,7 @@ const MyResponsiveLine = props => {
             tickSize: 10,
             tickPadding: 10,
             legendOffset: -60,
-            legendPosition: "middle"
+            legendPosition: "middle",
           }}
           colors={colorPallet.theme}
           enablePoints={false}

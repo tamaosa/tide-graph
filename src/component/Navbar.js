@@ -6,16 +6,17 @@ import Toolbar from "@material-ui/core/Toolbar";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Slide from "@material-ui/core/Slide";
 import Link from "@material-ui/core/Link";
-import logo from "../img/logo1.svg";
+import logo_light from "../img/logo1.svg";
+import logo_dark from "../img/logo1_dark.svg";
 import HamburgerMenu from "./HamburgerMenu.js";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   toolbar: {
-    height: theme.navbar.height
+    height: theme.navbar.height,
   },
   logo: {
-    height: theme.navbar.logoHeight
-  }
+    height: theme.navbar.logoHeight,
+  },
 }));
 
 function HideOnScroll(props) {
@@ -38,11 +39,15 @@ HideOnScroll.propTypes = {
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
    */
-  window: PropTypes.func
+  window: PropTypes.func,
 };
 
-export default function(props) {
+export default function (props) {
   const classes = useStyles();
+  const logo = window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? logo_dark
+    : logo_light;
+
   return (
     <nav>
       <HideOnScroll {...props}>

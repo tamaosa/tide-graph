@@ -9,12 +9,14 @@ import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import Toolbar from "@material-ui/core/Toolbar";
 import Link from "@material-ui/core/Link";
-import logo from "../img/logo1.svg";
+import logo_light from "../img/logo2.svg";
+import logo_dark from "../img/logo2_dark.svg";
 import pointdata from "../point.json";
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(0.5),
+    color: "#fff",
   },
   paper: {
     backgroundColor: theme.palette.primary.original,
@@ -27,6 +29,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function HamburgerMenu() {
   const classes = useStyles();
+  const logo = window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? logo_dark
+    : logo_light;
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
   const [state, setState] = React.useState({
     left: false,

@@ -15,8 +15,8 @@
    viewBox="0 0 95.249998 31.750001"
    version="1.1"
    id="svg8"
-   sodipodi:docname="logo1.svg"
-   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   sodipodi:docname="logo1_dark.svg">
   <defs
      id="defs2">
     <linearGradient
@@ -38,8 +38,8 @@
        id="clipeRfKGhQKM">
       <use
          id="use816"
-         xlink:href="#g3h5Oc3gno"
-         opacity="1" />
+         opacity="1"
+         xlink:href="#g3h5Oc3gno" />
     </clipPath>
     <text
        dominant-baseline="text-before-edge"
@@ -50,17 +50,17 @@
        letter-spacing="0"
        font-style="normal"
        font-weight="normal"
+       font-family="Rubik"
        font-size="110"
        y="35.78"
        x="132.35"
-       id="d1gBr9q1KJ"
-       font-family="Rubik"><tspan
+       id="d1gBr9q1KJ"><tspan
          id="tspan819"
+         text-anchor="start"
          dominant-baseline="text-before-edge"
          alignment-baseline="before-edge"
          dy="0em"
-         x="132.35"
-         text-anchor="start">Tidey</tspan></text>
+         x="132.35">Tidey</tspan></text>
     <style
        id="rubiknormalnormal">
     @font-face {
@@ -95,7 +95,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="2.6464737"
      inkscape:cx="163.93958"
-     inkscape:cy="109.48704"
+     inkscape:cy="64.143689"
      inkscape:document-units="px"
      inkscape:current-layer="g834"
      showgrid="false"
@@ -132,23 +132,23 @@
         <g
            id="g829"
            transform="matrix(1.1088679,0,0,1.0859587,-56.778789,-16.973711)"
-           style="fill:#ffffff;fill-opacity:1">
+           style="fill:#0094fa;fill-opacity:1">
           <g
-             style="isolation:isolate;fill:#ffffff;fill-opacity:1;stroke:none;stroke-opacity:1"
+             style="isolation:isolate;fill:#0094fa;fill-opacity:1;stroke:none;stroke-opacity:1"
              id="g893"
              transform="matrix(0.61703391,0,0,0.67020829,59.886055,23.73591)">
             <g
                id="g875"
                clip-path="url(#_clipPath_oyx9gmeD4sThCzX3Yp5OKBi6qTbMQJsd)"
-               style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-opacity:1">
+               style="fill:#0094fa;fill-opacity:1;stroke:none;stroke-opacity:1">
               <g
                  id="g873"
-                 style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-opacity:1">
+                 style="fill:#0094fa;fill-opacity:1;stroke:none;stroke-opacity:1">
                 <path
                    id="path862"
                    d="m 63.736,86.671 4.825,0.028 43.99,0.26 -0.569,-5.366 C 111.947,81.315 110.569,68.353 104.31,52.05 101.176,43.897 96.819,34.906 90.743,26.265 84.671,17.63 76.865,9.339 66.876,2.71 L 59.435,-2.23 59.29,22.202 19.465,86.409 58.91,86.642 Z m 5.24,-70.252 c 5.422,4.669 10.015,9.914 13.873,15.398 8.269,11.747 13.202,24.535 16.019,34.354 1.272,4.424 2.113,8.231 2.656,11.071 L 68.618,77.048 Z M 59.181,40.688 58.967,76.991 36.745,76.86 Z"
                    inkscape:connector-curvature="0"
-                   style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-opacity:1" />
+                   style="fill:#0094fa;fill-opacity:1;stroke:none;stroke-opacity:1" />
                 <mask
                    height="400%"
                    width="400%"
@@ -175,12 +175,12 @@
                    mask="url(#_mask_3AXmvn5EdNFoOJzpaKZdyL133iG9ZMOW)"
                    d="m 1.587,93.739 c 0,0 20.474,22.519 62.129,23.66 41.657,1.143 51.069,0.301 51.069,0.301 L 126.57,94.476 Z"
                    inkscape:connector-curvature="0"
-                   style="vector-effect:non-scaling-stroke;fill:#ffffff;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;fill-opacity:1;stroke-opacity:1" />
+                   style="vector-effect:non-scaling-stroke;fill:#0094fa;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;fill-opacity:1;stroke-opacity:1" />
                 <path
                    id="path871"
                    d="m 1.587,93.739 c 0,0 20.474,22.519 62.129,23.66 41.657,1.143 51.069,0.301 51.069,0.301 L 126.57,94.476 Z"
                    inkscape:connector-curvature="0"
-                   style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-opacity:1" />
+                   style="fill:#0094fa;fill-opacity:1;stroke:none;stroke-opacity:1" />
               </g>
             </g>
           </g>
@@ -188,11 +188,11 @@
         <g
            id="h13aiDrSV4"
            transform="translate(-3.8921672,5.9733613)"
-           style="fill:#ffffff;fill-opacity:1">
+           style="fill:#f4f9ff;fill-opacity:1">
           <use
              id="use831"
              xlink:href="#d1gBr9q1KJ"
-             style="opacity:1;fill:#ffffff;fill-opacity:1"
+             style="opacity:1;fill:#f4f9ff;fill-opacity:1"
              x="0"
              y="0"
              width="100%"

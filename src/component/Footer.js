@@ -1,6 +1,11 @@
 import React from "react";
 import "../App.css";
-import logo from "../img/logo2.svg";
+import logo_light from "../img/logo2.svg";
+import logo_dark from "../img/logo2_dark.svg";
+
+const logo = window.matchMedia("(prefers-color-scheme: dark)").matches
+  ? logo_dark
+  : logo_light;
 
 const Footer = () => (
   <footer className="App-footer">
