@@ -1,8 +1,6 @@
 {
   "name": "Tidey - とにかく「シンプル」なタイドグラフ",
   "short_name": "Tidey",
-  "theme_color": "#0094fa",
-  "background_color": "#282c34",
   "display": "standalone",
   "start_url": ".",
   "description": "Tideyでは全国237地点のシンプルなタイトグラフを配信しています。釣りやサーフィンのお供にぜひどうぞ。",

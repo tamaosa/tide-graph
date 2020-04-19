@@ -83,9 +83,7 @@ export default class App extends React.Component {
                         key={name}
                         exact
                         path={"/" + pointdata[name].point}
-                        render={() => (
-                          <TideGrapph point={pointdata[name].point} />
-                        )}
+                        render={() => <TideGrapph data={pointdata[name]} />}
                       />
                     ))}
                     <Route component={NotFound} />

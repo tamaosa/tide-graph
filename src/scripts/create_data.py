@@ -1,17 +1,32 @@
 import fetch_tidedata
+import os
 import csv
 import json
+from datetime import datetime
 
 
-def create_tidedata():
+def create_tidedata(year):
     with open('public/point.csv', 'r') as data:
         reader = csv.reader(data)
         for row in reader:
             print(row)
-            with open('public/data/' + row[0] + '.json', 'w') as f:
-                tidedata = fetch_tidedata.fetch_tidedata_2month(
-                    row[0], row[1], float(row[2]), float(row[3]))
-                json.dump(tidedata, f, ensure_ascii=False, indent=None)
+            tidedata = fetch_tidedata.extract_year(
+                year, row[0], float(row[2]), float(row[3]))
+            for month in range(1, 13):
+                datadir = 'public/data/' + str(year) + '/' + str(month)
+                os.makedirs(datadir, exist_ok=True)
+                with open(datadir + '/' + row[0] + '.json', 'w') as f:
+                    month_list = [key for key in tidedata.keys() if datetime.strptime(
+                        key, "%Y/%m/%d").month == month]
+                    month_data = {}
+                    month_data["point"] = row[0]
+                    month_data["name"] = row[1]
+                    month_data["lat"] = float(row[2])
+                    month_data["lon"] = float(row[3])
+                    month_data["data"] = {key: tidedata[key]
+                                          for key in month_list}
+                    json.dump(
+                        month_data, f, ensure_ascii=False, indent=None)
 
 
 def cretate_pointdata():
@@ -35,6 +50,7 @@ def cretate_pointdata():
             for row in reader:
                 data = {}
                 data["point"] = row[0]
+                data["name"] = row[1]
                 data["lat"] = float(row[2])
                 data["lon"] = float(row[3])
                 pointdata[row[1]] = data
@@ -47,5 +63,5 @@ def cretate_pointdata():
 
 
 if __name__ == "__main__":
-    create_tidedata()
-    # cretate_pointdata()
+    create_tidedata(2020)
+  # cretate_pointdata()

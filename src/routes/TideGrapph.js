@@ -5,12 +5,12 @@ import Table from "../component/Table.js";
 import MapPoint from "../component/MapPoint.js";
 import "../App.css";
 
-function formatData(fetchData, days) {
+function formatData(tideData, pointData, fetchDate, fetchDays) {
   let graphData = {
-    name: fetchData.name,
+    name: pointData.name,
     tide: [
       {
-        id: fetchData.point,
+        id: pointData.point,
         data: [],
       },
     ],
@@ -20,13 +20,13 @@ function formatData(fetchData, days) {
     mintide: null,
   };
   let tableData = [];
-  let mapData = [fetchData.lat, fetchData.lon];
+  let mapData = [pointData.lat, pointData.lon];
 
-  let tideData = [];
-  for (let i = 0; i < days; i++) {
-    let date = moment({ hour: 0 }).add(i, "days");
+  let extractedTideData = [];
+  for (let i = 0; i < fetchDays; i++) {
+    let date = moment(fetchDate).hour(0).minutes(0).second(0).add(i, "days");
     let strDate = date.format("YYYY/MM/DD");
-    let dailyData = fetchData.data[strDate];
+    let dailyData = tideData[strDate];
 
     tableData.push(dailyData);
     let graphDate = date.subtract(1, "hours");
@@ -34,13 +34,13 @@ function formatData(fetchData, days) {
       x: graphDate.add(1, "hours").format("YYYY/MM/DD HH:mm"),
       y: hourlyData,
     }));
-    tideData.push(...dailyData.tide);
+    extractedTideData.push(...dailyData.tide);
     graphData.tide[0].data.push(...coordinate);
     graphData.sunrise.push(strDate + " " + dailyData.sunrise);
     graphData.sunset.push(strDate + " " + dailyData.sunset);
   }
-  graphData.maxtide = Math.max(...tideData);
-  graphData.mintide = Math.min(...tideData);
+  graphData.maxtide = Math.max(...extractedTideData);
+  graphData.mintide = Math.min(...extractedTideData);
   return { graphData, tableData, mapData };
 }
 
@@ -51,18 +51,33 @@ class TideGrapph extends React.Component {
       error: null,
       isLoaded: false,
       items: [],
-      formatDays: 5,
+      fetchDate: new Date(),
+      fetchDays: 5,
     };
   }
 
   componentDidMount() {
-    fetch(`${process.env.PUBLIC_URL}/data/${this.props.point}.json`)
-      .then((res) => res.json())
+    const point = this.props.data.point;
+    const year = this.state.fetchDate.getFullYear();
+    const month = this.state.fetchDate.getMonth() + 1;
+    const fetchTideData = (year, month, point) =>
+      fetch(`${process.env.PUBLIC_URL}/data/${year}/${month}/${point}.json`);
+    Promise.all([
+      fetchTideData(year, month, point),
+      fetchTideData(year, month + 1, point),
+    ])
+      .then((res) => Promise.all([res[0].json(), res[1].json()]))
       .then(
         (result) => {
+          const data2month = { ...result[0].data, ...result[1].data };
           this.setState({
             isLoaded: true,
-            items: result,
+            items: formatData(
+              data2month,
+              this.props.data,
+              this.state.fetchDate,
+              this.state.fetchDays
+            ),
           });
         },
         (error) => {
@@ -75,7 +90,7 @@ class TideGrapph extends React.Component {
   }
 
   render() {
-    const { error, isLoaded, items, formatDays } = this.state;
+    const { error, isLoaded, items } = this.state;
     if (error) {
       return (
         <div className="simple-content">
@@ -92,7 +107,7 @@ class TideGrapph extends React.Component {
         </div>
       );
     } else {
-      const { graphData, tableData, mapData } = formatData(items, formatDays);
+      const { graphData, tableData, mapData } = items;
       return (
         <div className="App-contents">
           <h1>
