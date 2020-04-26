@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^10.0.1",
     "core-js": "3",
     "leaflet": "^1.6.0",
+    "leaflet-gesture-handling": "^1.1.8",
     "leaflet.markercluster": "^1.4.1",
     "moment": "^2.24.0",
     "prop-types": "^15.6.0",

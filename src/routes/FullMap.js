@@ -8,7 +8,7 @@ const FullMap = () => (
       height: "100vh",
     }}
   >
-    <MapPoint data={[36, 138]} zoom={5} operation={true} />
+    <MapPoint data={[36, 138]} zoom={5} operation={false} />
   </div>
 );
 
