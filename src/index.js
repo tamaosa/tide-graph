@@ -5,7 +5,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import ReactGA from "react-ga";
 
-ReactGA.initialize("UA-154193009-2");
+ReactGA.initialize(process.env.GOOGLE_ANALYTICS_ID);
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
