@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
+import MomentUtils from "@date-io/moment";
+import { MuiPickersUtilsProvider, DatePicker } from "@material-ui/pickers";
+import { makeStyles } from "@material-ui/core/styles";
 import MyResponsiveLine from "../component/MyResponsiveLine.js";
 import Table from "../component/Table.js";
 import MapPoint from "../component/MapPoint.js";
 import "../App.css";
+
+const useStyles = makeStyles((theme) => ({
+  input: {
+    color: "inherit",
+    fontSize: "1em",
+    border: "solid 1px",
+    borderRadius: "5px",
+    marginTop: "1em",
+    paddingLeft: "0.3em",
+  },
+}));
 
 function formatData(tideData, pointData, fetchDate, fetchDays) {
   let graphData = {
@@ -44,86 +58,100 @@ function formatData(tideData, pointData, fetchDate, fetchDays) {
   return { graphData, tableData, mapData };
 }
 
-class TideGrapph extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      isLoaded: false,
-      items: [],
-      fetchDate: new Date(),
-      fetchDays: 5,
-    };
-  }
+const fetchTideData = (year, month, point) =>
+  fetch(`${process.env.PUBLIC_URL}/data/${year}/${month}/${point}.json`);
 
-  componentDidMount() {
-    const point = this.props.data.point;
-    const year = this.state.fetchDate.getFullYear();
-    const month = this.state.fetchDate.getMonth() + 1;
-    const fetchTideData = (year, month, point) =>
-      fetch(`${process.env.PUBLIC_URL}/data/${year}/${month}/${point}.json`);
+export default function TideGrapph(props) {
+  const classes = useStyles();
+  const fetchDays = 5;
+  const pointData = props.data;
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(moment());
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    setIsLoaded(false);
+  };
+
+  useEffect(() => {
+    const year = selectedDate.year();
+    const month = selectedDate.month() + 1;
     Promise.all([
-      fetchTideData(year, month, point),
-      fetchTideData(year, month + 1, point),
+      fetchTideData(year, month, pointData.point),
+      fetchTideData(year, month + 1, pointData.point),
     ])
       .then((res) => Promise.all([res[0].json(), res[1].json()]))
       .then(
         (result) => {
           const data2month = { ...result[0].data, ...result[1].data };
-          this.setState({
-            isLoaded: true,
-            items: formatData(
-              data2month,
-              this.props.data,
-              this.state.fetchDate,
-              this.state.fetchDays
-            ),
-          });
+          const items = formatData(
+            data2month,
+            pointData,
+            selectedDate,
+            fetchDays
+          );
+          setItems(items);
+          setIsLoaded(true);
         },
         (error) => {
-          this.setState({
-            isLoaded: true,
-            error,
-          });
+          setError(error);
+          setIsLoaded(true);
         }
       );
-  }
+  }, [pointData, selectedDate]);
 
-  render() {
-    const { error, isLoaded, items } = this.state;
-    if (error) {
-      return (
-        <div className="simple-content">
-          <div>
-            <h1>Error</h1>
-            <p>Error: {error.message}</p>
-          </div>
+  if (error) {
+    return (
+      <div className="simple-content">
+        <div>
+          <h1>Error</h1>
+          <p>Error: {error.message}</p>
         </div>
-      );
-    } else if (!isLoaded) {
-      return (
-        <div className="simple-content">
-          <div className="loader">Loading...</div>
+      </div>
+    );
+  } else if (!isLoaded) {
+    return (
+      <div className="simple-content">
+        <div className="loader">Loading...</div>
+      </div>
+    );
+  } else {
+    const { graphData, tableData, mapData } = items;
+    return (
+      <div className="App-contents">
+        <h1 style={{ clear: "right" }}>
+          {graphData.name}
+          <span style={{ fontSize: "0.7em" }}>のタイドグラフ</span>
+          <span
+            style={{
+              float: "right",
+              fontSize: "0.4em",
+            }}
+          >
+            <MuiPickersUtilsProvider utils={MomentUtils}>
+              <DatePicker
+                format="[from] MM/DD "
+                minDate={moment("20200101", "YYYYMMDD")}
+                maxDate={moment("20201227", "YYYYMMDD")}
+                value={selectedDate}
+                onChange={handleDateChange}
+                inputProps={{ size: "10" }}
+                InputProps={{
+                  disableUnderline: true,
+                  className: classes.input,
+                }}
+              />
+            </MuiPickersUtilsProvider>
+          </span>
+        </h1>
+        <MyResponsiveLine data={graphData} />
+        <Table data={tableData} />
+        <div className="map-content">
+          <p>周辺地域</p>
+          <MapPoint data={mapData} zoom={10} />
         </div>
-      );
-    } else {
-      const { graphData, tableData, mapData } = items;
-      return (
-        <div className="App-contents">
-          <h1>
-            {graphData.name}
-            <span style={{ fontSize: "0.7em" }}>のタイドグラフ</span>
-          </h1>
-          <MyResponsiveLine data={graphData} />
-          <Table data={tableData} />
-          <div className="map-content">
-            <p>周辺地域</p>
-            <MapPoint data={mapData} zoom={10} />
-          </div>
-        </div>
-      );
-    }
+      </div>
+    );
   }
 }
-
-export default TideGrapph;

@@ -22,8 +22,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.original,
     color: theme.palette.primary.contrastText,
   },
-  toolbar: {
-    height: theme.navbar.height,
+  img: {
+    height: "64px",
   },
 }));
 
@@ -68,9 +68,9 @@ export default function HamburgerMenu() {
         disableBackdropTransition={!iOS}
         disableDiscovery={iOS}
       >
-        <Toolbar className={classes.toolbar}>
-          <Link href={"/"} className={classes.logo}>
-            <img src={logo} alt="logo" style={{ width: "6rem" }} />
+        <Toolbar>
+          <Link href={"/"}>
+            <img src={logo} alt="logo" className={classes.img} />
           </Link>
         </Toolbar>
         <Divider />

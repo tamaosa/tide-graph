@@ -45,11 +45,6 @@ export default function MapPoint(props) {
           ))}
         </MarkerClusterGroup>
       </Map>
-      {!operation && (
-        <p style={{ fontSize: "0.5em" }}>
-          地図を操作するには2本指を使用して下さい
-        </p>
-      )}
     </div>
   );
 }

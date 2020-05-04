@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import { Router, Route, Switch } from "react-router-dom";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import "./App.css";
@@ -35,66 +35,60 @@ const theme = createMuiTheme({
     fontFamily: ['"M PLUS 1p"', "-apple-system", "sans-serif"].join(","),
     fontSize: 15,
   },
-  navbar: {
-    height: "7.5vh",
-    logoHeight: "80%",
-  },
 });
 
-export default class App extends React.Component {
-  componentDidMount() {
-    ReactGA.pageview(window.location.pathname);
-  }
+export default function App() {
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
 
-  render() {
-    return (
-      <Router history={history}>
-        <div className="App">
-          <ThemeProvider theme={theme}>
-            <Navbar />
-            <main>
-              <Suspense
-                fallback={
-                  <div className="simple-content">
-                    {/* <div className="loader">Loading...</div> */}
-                  </div>
-                }
-              >
-                <div className="container">
-                  <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/map" component={FullMap} />
-                    {pointdata.region.list.map((region, i) => (
-                      <Route
-                        key={region}
-                        exact
-                        path={`/${pointdata.region.point[i]}`}
-                        render={() => (
-                          <Region
-                            name={region}
-                            lat={pointdata.region.lat[i]}
-                            lon={pointdata.region.lon[i]}
-                          />
-                        )}
-                      />
-                    ))}
-                    {pointdata.list.map((name) => (
-                      <Route
-                        key={name}
-                        exact
-                        path={"/" + pointdata[name].point}
-                        render={() => <TideGrapph data={pointdata[name]} />}
-                      />
-                    ))}
-                    <Route component={NotFound} />
-                  </Switch>
+  return (
+    <Router history={history}>
+      <div className="App">
+        <ThemeProvider theme={theme}>
+          <Navbar />
+          <main>
+            <Suspense
+              fallback={
+                <div className="simple-content">
+                  {/* <div className="loader">Loading...</div> */}
                 </div>
-              </Suspense>
-            </main>
-            <Footer />
-          </ThemeProvider>
-        </div>
-      </Router>
-    );
-  }
+              }
+            >
+              <div className="container">
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route exact path="/map" component={FullMap} />
+                  {pointdata.region.list.map((region, i) => (
+                    <Route
+                      key={region}
+                      exact
+                      path={`/${pointdata.region.point[i]}`}
+                      render={() => (
+                        <Region
+                          name={region}
+                          lat={pointdata.region.lat[i]}
+                          lon={pointdata.region.lon[i]}
+                        />
+                      )}
+                    />
+                  ))}
+                  {pointdata.list.map((name) => (
+                    <Route
+                      key={name}
+                      exact
+                      path={"/" + pointdata[name].point}
+                      render={() => <TideGrapph data={pointdata[name]} />}
+                    />
+                  ))}
+                  <Route component={NotFound} />
+                </Switch>
+              </div>
+            </Suspense>
+          </main>
+          <Footer />
+        </ThemeProvider>
+      </div>
+    </Router>
+  );
 }
