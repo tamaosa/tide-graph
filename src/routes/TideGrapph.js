@@ -6,11 +6,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import MyResponsiveLine from "../component/MyResponsiveLine.js";
 import Table from "../component/Table.js";
 import MapPoint from "../component/MapPoint.js";
+import Loading from "../component/Loading.js";
 import "../App.css";
 
 const useStyles = makeStyles((theme) => ({
   input: {
-    color: "inherit",
     fontSize: "1em",
     border: "solid 1px",
     borderRadius: "5px",
@@ -113,7 +113,7 @@ export default function TideGrapph(props) {
   } else if (!isLoaded) {
     return (
       <div className="simple-content">
-        <div className="loader">Loading...</div>
+        <Loading />
       </div>
     );
   } else {

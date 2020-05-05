@@ -1,10 +1,11 @@
 import React from "react";
 import { ResponsiveLine } from "@nivo/line";
-import colorPallet from "../colorPallet.js";
+import { useTheme } from "@material-ui/core/styles";
 
 const MyResponsiveLine = (props) => {
+  const theme = useTheme();
   const { tide, sunrise, sunset, maxtide, mintide } = props.data;
-  const accentColor = colorPallet.accent;
+
   const sunriseMarker = sunrise.map((x) => ({
     axis: "x",
     value: new Date(x),
@@ -12,11 +13,11 @@ const MyResponsiveLine = (props) => {
     legendPosition: "top",
     legendOffsetY: 15,
     lineStyle: {
-      stroke: accentColor,
+      stroke: theme.palette.info.main,
       strokeWidth: 2,
     },
     textStyle: {
-      fill: accentColor,
+      fill: theme.palette.info.main,
       fontSize: 12,
     },
   }));
@@ -28,11 +29,11 @@ const MyResponsiveLine = (props) => {
     legendPosition: "top",
     legendOffsetY: 15,
     lineStyle: {
-      stroke: accentColor,
+      stroke: theme.palette.info.main,
       strokeWidth: 2,
     },
     textStyle: {
-      fill: accentColor,
+      fill: theme.palette.info.main,
       fontSize: 12,
     },
   }));
@@ -49,9 +50,9 @@ const MyResponsiveLine = (props) => {
             fontFamily: ['"M PLUS 1p"', "-apple-system", "sans-serif"].join(
               ","
             ),
-            background: colorPallet.main,
+            background: theme.palette.background.default,
             fontSize: 12,
-            textColor: colorPallet.txt,
+            textColor: theme.palette.text.primary,
             axis: {
               legend: {
                 text: {
@@ -100,7 +101,7 @@ const MyResponsiveLine = (props) => {
             legendOffset: -60,
             legendPosition: "middle",
           }}
-          colors={colorPallet.theme}
+          colors={theme.palette.primary.main}
           enablePoints={false}
           isInteractive={false}
           markers={sunriseMarker.concat(sunsetMarker)}

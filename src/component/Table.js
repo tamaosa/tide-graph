@@ -11,8 +11,7 @@ import "../App.css";
 
 const StyledTableCell = withStyles((theme) => ({
   root: {
-    backgroundColor: theme.palette.primary.original,
-    color: theme.palette.primary.contrastText,
+    backgroundColor: theme.palette.background.default,
   },
 }))(TableCell);
 
@@ -27,7 +26,7 @@ export default function SimpleTable(props) {
   const rows = props.data;
 
   return (
-    <div className="table-content">
+    <div style={{ marginTop: "1rem" }}>
       <TableContainer component={Paper} elevation={0}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>

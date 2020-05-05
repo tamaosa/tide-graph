@@ -27,7 +27,7 @@ export default function Navbar() {
 
   return (
     <nav>
-      <AppBar position="fixed">
+      <AppBar position="fixed" color="secondary">
         <Toolbar>
           <HamburgerMenu />
           <div className={classes.logo}>
@@ -37,7 +37,7 @@ export default function Navbar() {
           </div>
         </Toolbar>
       </AppBar>
-      <Toolbar className={classes.toolbar} />
+      <Toolbar />
     </nav>
   );
 }

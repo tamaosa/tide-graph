@@ -1,13 +1,25 @@
 import React from "react";
 import RegionRoll from "../component/RegionRoll";
 import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import "../App.css";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    color: theme.palette.primary.theme,
+  title: {
     textAlign: "center",
+    color: theme.palette.info.main,
+    margin: 0,
+  },
+  content: {
+    marginTop: "2rem",
+  },
+  mapButton: {
+    textAlign: "center",
+    marginTop: "1rem",
+  },
+  regionRoll: {
+    marginTop: "1rem",
   },
 }));
 
@@ -16,13 +28,15 @@ export default function Home() {
   return (
     <div>
       <div className="title-content">
-        <div className="title-text">
-          <h1>Tidey</h1>
-          <p>とにかく「シンプル」なタイドグラフ</p>
+        <div className={classes.title}>
+          <Typography variant="h1">Tidey</Typography>
+          <Typography variant="subtitle1">
+            とにかく「シンプル」なタイドグラフ
+          </Typography>
         </div>
       </div>
-      <div className="explanation-content">
-        <p>
+      <div>
+        <Typography>
           Tideyでは全国237地点のシンプルなタイトグラフを配信しています。釣り
           <span role="img" aria-label="fishing">
             🎣
@@ -32,17 +46,21 @@ export default function Home() {
             🏄
           </span>
           のお供にぜひどうぞ。
-        </p>
+        </Typography>
       </div>
-      <h3>地図から探す</h3>
-      <div className={classes.root}>
-        <Button variant="outlined" color="inherit" href="/map">
-          地図を表示する
-        </Button>
+      <div className={classes.content}>
+        <Typography variant="h5">地図から探す</Typography>
+        <div className={classes.mapButton}>
+          <Button variant="outlined" color="primary" href="/map" size="large">
+            地図を表示する
+          </Button>
+        </div>
       </div>
-      <h3>地域から探す</h3>
-      <div className="region-content">
-        <RegionRoll />
+      <div className={classes.content}>
+        <Typography variant="h5">地域から探す</Typography>
+        <div className={classes.regionRoll}>
+          <RegionRoll />
+        </div>
       </div>
     </div>
   );

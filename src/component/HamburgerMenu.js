@@ -16,11 +16,9 @@ import pointdata from "../point.json";
 const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(0.5),
-    color: "#fff",
   },
   paper: {
-    backgroundColor: theme.palette.primary.original,
-    color: theme.palette.primary.contrastText,
+    backgroundColor: theme.palette.background.default,
   },
   img: {
     height: "64px",

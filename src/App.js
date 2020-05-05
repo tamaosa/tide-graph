@@ -1,12 +1,12 @@
-import React, { Suspense, lazy, useEffect } from "react";
+import React, { Suspense, lazy, useEffect, useMemo } from "react";
 import { Router, Route, Switch } from "react-router-dom";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import "./App.css";
 import Navbar from "./component/Navbar.js";
 import Footer from "./component/Footer.js";
 import pointdata from "./point.json";
-import colorPallet from "./colorPallet.js";
-
 import createHistory from "history/createBrowserHistory";
 import ReactGA from "react-ga";
 
@@ -22,39 +22,50 @@ history.listen((location) => {
   ReactGA.pageview(location.pathname);
 });
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: colorPallet.dark,
-      original: colorPallet.main,
-      contrastText: colorPallet.txt,
-      theme: colorPallet.theme,
-    },
-  },
-  typography: {
-    fontFamily: ['"M PLUS 1p"', "-apple-system", "sans-serif"].join(","),
-    fontSize: 15,
-  },
-});
-
 export default function App() {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+
+  const theme = useMemo(
+    () =>
+      createMuiTheme({
+        palette: {
+          type: prefersDarkMode ? "dark" : "light",
+          primary: {
+            main: "#0094fa",
+          },
+          secondary: {
+            main: prefersDarkMode ? "#282e34" : "#0094fa",
+          },
+          info: {
+            main: prefersDarkMode ? "#d3fbd8" : "#ef5d8b",
+          },
+          text: {
+            primary: prefersDarkMode ? "#f4f9ff" : "#3f4756",
+          },
+          background: {
+            default: prefersDarkMode ? "#282c34" : "#ffffff",
+          },
+        },
+        typography: {
+          fontFamily: ['"M PLUS 1p"', "-apple-system", "sans-serif"].join(","),
+          fontSize: 15,
+        },
+      }),
+    [prefersDarkMode]
+  );
+
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search);
   }, []);
 
   return (
-    <Router history={history}>
-      <div className="App">
-        <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Router history={history}>
+        <div>
           <Navbar />
           <main>
-            <Suspense
-              fallback={
-                <div className="simple-content">
-                  {/* <div className="loader">Loading...</div> */}
-                </div>
-              }
-            >
+            <Suspense fallback={<div className="simple-content"></div>}>
               <div className="container">
                 <Switch>
                   <Route exact path="/" component={Home} />
@@ -87,8 +98,8 @@ export default function App() {
             </Suspense>
           </main>
           <Footer />
-        </ThemeProvider>
-      </div>
-    </Router>
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
