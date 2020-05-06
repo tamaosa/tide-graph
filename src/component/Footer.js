@@ -21,11 +21,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Footer = () => {
+const Footer = (props) => {
   const classes = useStyles();
-  const logo = window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? logo_dark
-    : logo_light;
+  const logo = props.state ? logo_dark : logo_light;
 
   return (
     <footer style={{ marginTop: "4rem" }}>

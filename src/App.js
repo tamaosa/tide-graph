@@ -1,8 +1,7 @@
-import React, { Suspense, lazy, useEffect, useMemo } from "react";
+import React, { Suspense, lazy, useEffect, useMemo, useState } from "react";
 import { Router, Route, Switch } from "react-router-dom";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 import "./App.css";
 import Navbar from "./component/Navbar.js";
 import Footer from "./component/Footer.js";
@@ -23,7 +22,9 @@ history.listen((location) => {
 });
 
 export default function App() {
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const [prefersDarkMode, setPrefersDarkMode] = useState(
+    localStorage.getItem("prefersDarkMode") === "true"
+  );
 
   const theme = useMemo(
     () =>
@@ -63,7 +64,7 @@ export default function App() {
       <CssBaseline />
       <Router history={history}>
         <div>
-          <Navbar />
+          <Navbar state={prefersDarkMode} setState={setPrefersDarkMode} />
           <main>
             <Suspense fallback={<div className="simple-content"></div>}>
               <div className="container">
@@ -97,7 +98,7 @@ export default function App() {
               </div>
             </Suspense>
           </main>
-          <Footer />
+          <Footer state={prefersDarkMode} />
         </div>
       </Router>
     </ThemeProvider>
