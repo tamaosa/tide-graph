@@ -133,7 +133,7 @@ export default function TideGrapph(props) {
               <DatePicker
                 format="[from] MM/DD "
                 minDate={moment("20200101", "YYYYMMDD")}
-                maxDate={moment("20201227", "YYYYMMDD")}
+                maxDate={moment("20201130", "YYYYMMDD")}
                 value={selectedDate}
                 onChange={handleDateChange}
                 inputProps={{ size: "10" }}
