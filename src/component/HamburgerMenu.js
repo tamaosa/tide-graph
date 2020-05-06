@@ -25,11 +25,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function HamburgerMenu() {
+export default function HamburgerMenu(props) {
   const classes = useStyles();
-  const logo = window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? logo_dark
-    : logo_light;
+  const logo = props.state ? logo_dark : logo_light;
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
   const [state, setState] = React.useState({
     left: false,
@@ -72,14 +70,12 @@ export default function HamburgerMenu() {
           </Link>
         </Toolbar>
         <Divider />
-        <Divider />
         <List onClick={toggleDrawer("left", false)}>
           <Link href="/map" color="inherit">
             <ListItem button>
               <Typography gutterBottom>地図を表示</Typography>
             </ListItem>
           </Link>
-          <Divider />
           <Divider />
           {pointdata.region.list.map((region, i) => (
             <div key={region}>
@@ -91,6 +87,10 @@ export default function HamburgerMenu() {
             </div>
           ))}
         </List>
+        <Divider />
+        <ListItem>
+          <Typography variant="body2">&copy;Tamaosa</Typography>
+        </ListItem>
       </SwipeableDrawer>
     </div>
   );

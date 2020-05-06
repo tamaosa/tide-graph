@@ -34,7 +34,7 @@ export default function Navbar(props) {
     <nav>
       <AppBar position="fixed" color="secondary">
         <Toolbar>
-          <HamburgerMenu />
+          <HamburgerMenu state={state} />
           <div className={classes.logo}>
             <Link href={"/"}>
               <img src={logo} alt="logo" className={classes.img} />

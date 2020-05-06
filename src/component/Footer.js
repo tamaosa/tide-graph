@@ -44,7 +44,7 @@ const Footer = (props) => {
               rel="noopener noreferrer"
               alt="twitter"
             >
-              @tamaki_osamu
+              @Tamaosa
             </Link>
           </Typography>
         </div>
