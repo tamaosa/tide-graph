@@ -131,12 +131,12 @@ export default function TideGrapph(props) {
           >
             <MuiPickersUtilsProvider utils={MomentUtils}>
               <DatePicker
-                format="[from] MM/DD "
+                format="MM/DD [-]"
                 minDate={moment("20200101", "YYYYMMDD")}
                 maxDate={moment("20201130", "YYYYMMDD")}
                 value={selectedDate}
                 onChange={handleDateChange}
-                inputProps={{ size: "10" }}
+                inputProps={{ size: "7" }}
                 InputProps={{
                   disableUnderline: true,
                   className: classes.input,
