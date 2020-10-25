@@ -63,5 +63,5 @@ def cretate_pointdata():
 
 
 if __name__ == "__main__":
-    create_tidedata(2020)
+    create_tidedata(datetime.today().year)
   # cretate_pointdata()
