@@ -6,7 +6,7 @@ A simple tide graph of of 237 locations in Japan
 
 ## App URL
 
-<https://www.tidey.work/>
+<https://tidey.netlify.app/>
 
 ## Built With
 
