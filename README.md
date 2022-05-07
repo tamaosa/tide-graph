@@ -1,3 +1,5 @@
+This repository is not maintained
+
 # Tidey
 
 A simple tide graph of of 237 locations in Japan
@@ -14,7 +16,3 @@ A simple tide graph of of 237 locations in Japan
 - [material-ui](https://material-ui.com/)
 - [nivo](https://nivo.rocks/)
 - [leaflet](https://leafletjs.com/)
-
-## Author
-
-[Tamaosa](https://github.com/tamaki-osamu)
